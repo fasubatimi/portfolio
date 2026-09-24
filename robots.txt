@@ -1,0 +1,7 @@
+# Fasuba Olukunle — Portfolio
+# All content is public and crawlable.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://fasubatimi.github.io/portfolio/sitemap.xml

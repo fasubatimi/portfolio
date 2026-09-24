@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F0EEE8">
+
+  <!-- No-flash theme init: set data-theme before first paint -->
+  <script>
+    (function () {
+      try {
+        var s = localStorage.getItem('theme');
+        var d = s ? s === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (d) document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
+  
+  <!-- Primary Meta Tags -->
+  <title>About Kunle — Fasuba Olukunle</title>
+  <meta name="title" content="About Kunle — Fasuba Olukunle">
+  <meta name="description" content="Biography, engineering philosophy, and background of Fasuba Olukunle (Kunle), a software developer based in Lagos, Nigeria.">
+  <meta name="author" content="Fasuba Olukunle">
+
+  <!-- Canonical & Social (Open Graph / Twitter) -->
+  <link rel="canonical" href="https://fasubatimi.github.io/portfolio/about.html">
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Fasuba Olukunle — Portfolio">
+  <meta property="og:url" content="https://fasubatimi.github.io/portfolio/about.html">
+  <meta property="og:title" content="About Kunle — Fasuba Olukunle">
+  <meta property="og:description" content="Biography, engineering philosophy, and background of Fasuba Olukunle (Kunle), a software developer based in Lagos, Nigeria.">
+  <meta property="og:image" content="https://fasubatimi.github.io/portfolio/assets/og/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Fasuba Olukunle — Software Developer, Lagos, Nigeria">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Kunle — Fasuba Olukunle">
+  <meta name="twitter:description" content="Biography, engineering philosophy, and background of Fasuba Olukunle (Kunle), a software developer based in Lagos, Nigeria.">
+  <meta name="twitter:image" content="https://fasubatimi.github.io/portfolio/assets/og/og-cover.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Editorial Design System (ZERO GRADIENTS) -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Progressive-enhancement safeguard: show reveal content if JS is disabled -->
+  <noscript>
+    <style>
+      .reveal-on-scroll { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+  
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23203238'/><text x='16' y='21' font-family='serif' font-size='15' font-weight='bold' fill='%23F0EEE8' text-anchor='middle'>FO</text></svg>">
+</head>
+<body>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ========================================================================
+       01. Site Header & Multi-Page Navigation
+       ======================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a href="index.html" class="header-brand" aria-label="Fasuba Olukunle — Home">
+        FASUBA <span>/</span> OLUKUNLE
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="header-nav" aria-label="Main Portfolio Navigation">
+        <a href="work.html" class="nav-link">Selected Work</a>
+        <a href="case-studies.html" class="nav-link">Case Studies</a>
+        <a href="about.html" class="nav-link active" aria-current="page">About</a>
+        <a href="skills.html" class="nav-link">Skills</a>
+        <a href="contact.html" class="nav-cta">Get in Touch</a>
+      </nav>
+
+      <!-- Mobile Nav Toggle -->
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark theme" title="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+      </button>
+
+      <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+    <nav class="mobile-nav-links">
+      <a href="index.html">Home</a>
+      <a href="work.html">Selected Work</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="about.html" class="active">About Kunle</a>
+      <a href="skills.html">Skills &amp; Tools</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="mobile-drawer-footer">
+      <span class="meta-eyebrow"><span class="dot-indicator"></span> FASUBA OLUKUNLE · LAGOS, NIGERIA</span>
+      <a href="mailto:fasubatimi@gmail.com" class="btn-text-link">fasubatimi@gmail.com ↗</a>
+    </div>
+  </div>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content">
+
+    <!-- ========================================================================
+         02. Page Header Banner
+         ======================================================================== -->
+    <section class="page-header-banner" aria-label="About Kunle Banner">
+      <div class="container">
+        <div class="page-banner-grid">
+          <div class="page-banner-top">
+            <span class="meta-eyebrow"><span class="dot-indicator"></span> 03 / BIOGRAPHY &amp; PHILOSOPHY</span>
+            <span class="editorial-badge">LAGOS, NIGERIA</span>
+          </div>
+          <h1 class="page-banner-title">About Kunle</h1>
+          <p class="page-banner-lead">
+            Software grounded in real utility and careful craft.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         03. About Content & Factsheet Grid
+         ======================================================================== -->
+    <section class="about-section" aria-label="Detailed Biography">
+      <div class="container">
+        <div class="about-grid">
+          
+          <!-- Sticky Factsheet Sidebar -->
+          <aside class="about-sidebar">
+            <span class="about-eyebrow">CURRICULUM VITAE &amp; SUMMARY</span>
+            <h2 class="about-heading" style="font-size: 2rem;">Fasuba Olukunle</h2>
+            
+            <div class="about-factsheet">
+              <div class="factsheet-row">
+                <span>FULL NAME</span>
+                <strong>Fasuba Olukunle</strong>
+              </div>
+              <div class="factsheet-row">
+                <span>KNOWN AS</span>
+                <strong>Kunle</strong>
+              </div>
+              <div class="factsheet-row">
+                <span>EDUCATION</span>
+                <strong>Computer Science</strong>
+              </div>
+              <div class="factsheet-row">
+                <span>LOCATION</span>
+                <strong>Lagos, Nigeria (WAT / UTC+1)</strong>
+              </div>
+              <div class="factsheet-row">
+                <span>PRIMARY FOCUS</span>
+                <strong>Android, Systems &amp; Clean UI</strong>
+              </div>
+              <div class="factsheet-row">
+                <span>AVAILABILITY</span>
+                <strong>Software Engineering Roles</strong>
+              </div>
+              <div class="factsheet-row">
+                <span>DIRECT EMAIL</span>
+                <strong>fasubatimi@gmail.com</strong>
+              </div>
+              <div class="factsheet-row">
+                <span>GITHUB</span>
+                <strong>github.com/fasubatimi</strong>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+              <a href="cv.html" class="btn-primary">
+                View / Print CV ↧
+              </a>
+              <button type="button" class="btn-secondary" data-copy-email>
+                Copy Email Address
+              </button>
+              <a href="contact.html" class="btn-secondary">
+                Go to Contact Form ↗
+              </a>
+            </div>
+          </aside>
+
+          <!-- Main Narrative -->
+          <div class="about-narrative">
+            <p>
+              I’m Kunle, a software developer based in Lagos, Nigeria. I build apps and systems around problems that people actually face in their day-to-day lives.
+            </p>
+            <p>
+              Living and developing software in Lagos gives you a distinct perspective on technology. When network bandwidth fluctuates, servers encounter latency, and users face urgent constraints, software cannot afford to be fragile or bloated. It has to work reliably on modest hardware, fail gracefully when offline, and provide immediate clarity without cognitive friction.
+            </p>
+            <p>
+              My focus is centered on Native Android development using Java 17, cloud integrations with Firebase (Realtime Database, Authentication, and Storage), open-source mapping with OSMDroid, and distributed systems architecture. Whether it is an emergency reporting system like SafeAlert, a local network terminal management tool like Library Control, or an inventory system like Dansamdolly, I care deeply about how software is built from the inside out.
+            </p>
+
+            <!-- Three Guiding Principles -->
+            <div style="margin-top: 24px;">
+              <h3 style="font-size: 1.65rem; margin-bottom: 16px;">Core Engineering Principles</h3>
+              
+              <div style="display: flex; flex-direction: column; gap: 16px;" data-stagger="0.12">
+                <div class="principle-card reveal-on-scroll">
+                  <h4>01. Clarity over cleverness</h4>
+                  <p>
+                    I favor explicit architectures, readable code, and predictable system states over obscure one-liners or fragile abstractions. If a fellow developer or teammate cannot understand the codebase within minutes, the architecture has failed.
+                  </p>
+                </div>
+
+                <div class="principle-card reveal-on-scroll">
+                  <h4>02. Dependability under stress</h4>
+                  <p>
+                    Software must behave predictably under sub-optimal conditions. That means implementing robust local caching, graceful network degradation, zero-bloat dependencies, and defensive error handling.
+                  </p>
+                </div>
+
+                <div class="principle-card reveal-on-scroll">
+                  <h4>03. Ownership end to end</h4>
+                  <p>
+                    I take responsibility for a feature from requirements through implementation, testing, and iteration. I would rather ship something focused that works reliably than something broad that breaks under real use.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- What Kunle is Seeking -->
+            <div class="reveal-on-scroll" style="margin-top: 36px; padding: 24px; background-color: var(--color-paper-light); border: 1px solid var(--color-line-dark);">
+              <h3 style="font-size: 1.4rem; color: var(--color-ink); margin-bottom: 10px;">Opportunities I Am Seeking</h3>
+              <p style="font-size: 1rem; color: var(--color-ink-soft);">
+                I am actively seeking <strong>software engineering roles</strong>. I thrive in teams that value engineering discipline, peer code review, and building tools people rely on. If you have an opportunity or would like to review my code, please reach out.
+              </p>
+              <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+                <a href="contact.html" class="btn-primary">Get in Touch ↗</a>
+                <a href="cv.html" class="btn-secondary">View Full CV ↧</a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         04. Next Navigation Teaser
+         ======================================================================== -->
+    <section class="home-section-teaser" aria-label="Next Step Navigation">
+      <div class="container">
+        <div class="teaser-grid reveal-on-scroll">
+          <div>
+            <span class="meta-eyebrow"><span class="dot-indicator"></span> NEXT SECTION</span>
+            <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: 6px;">Explore my technical toolkit &amp; tools.</h2>
+            <p style="max-width: 580px; margin-top: 10px;">
+              Review the languages, libraries, protocols, and workflows I have implemented with verifiable project evidence.
+            </p>
+          </div>
+          <a href="skills.html" class="btn-primary">
+            Explore Skills →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       05. Site Footer & Colophon
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>FASUBA / OLUKUNLE</h3>
+          <p>
+            Software developer building practical, reliable software in Lagos, Nigeria.
+          </p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer Navigation">
+          <h4>Pages</h4>
+          <a href="index.html">Home</a>
+          <a href="work.html">Selected Work</a>
+          <a href="case-studies.html">Case Studies</a>
+          <a href="about.html">About Kunle</a>
+          <a href="skills.html">Skills &amp; Toolkit</a>
+          <a href="contact.html">Contact &amp; Inquiries</a>
+        </nav>
+
+        <nav class="footer-nav" aria-label="External Profiles">
+          <h4>Profiles</h4>
+          <a href="https://github.com/fasubatimi" target="_blank" rel="noopener noreferrer">GitHub (fasubatimi) ↗</a>
+          <a href="mailto:fasubatimi@gmail.com">fasubatimi@gmail.com ↗</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Fasuba Olukunle. All rights reserved.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Main Interactive JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>

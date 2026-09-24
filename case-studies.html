@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F0EEE8">
+
+  <!-- No-flash theme init: set data-theme before first paint -->
+  <script>
+    (function () {
+      try {
+        var s = localStorage.getItem('theme');
+        var d = s ? s === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (d) document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
+  
+  <!-- Primary Meta Tags -->
+  <title>Project Case Studies — Fasuba Olukunle</title>
+  <meta name="title" content="Project Case Studies — Fasuba Olukunle">
+  <meta name="description" content="Detailed engineering case studies for SafeAlert, Library Control, and Dansamdolly by software developer Fasuba Olukunle.">
+  <meta name="author" content="Fasuba Olukunle">
+
+  <!-- Canonical & Social (Open Graph / Twitter) -->
+  <link rel="canonical" href="https://fasubatimi.github.io/portfolio/case-studies.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Fasuba Olukunle — Portfolio">
+  <meta property="og:url" content="https://fasubatimi.github.io/portfolio/case-studies.html">
+  <meta property="og:title" content="Project Case Studies — Fasuba Olukunle">
+  <meta property="og:description" content="Detailed engineering case studies for SafeAlert, Library Control, and Dansamdolly by software developer Fasuba Olukunle.">
+  <meta property="og:image" content="https://fasubatimi.github.io/portfolio/assets/og/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Fasuba Olukunle — Software Developer, Lagos, Nigeria">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Project Case Studies — Fasuba Olukunle">
+  <meta name="twitter:description" content="Detailed engineering case studies for SafeAlert, Library Control, and Dansamdolly by software developer Fasuba Olukunle.">
+  <meta name="twitter:image" content="https://fasubatimi.github.io/portfolio/assets/og/og-cover.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Editorial Design System (ZERO GRADIENTS) -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Progressive-enhancement safeguard: show reveal content if JS is disabled -->
+  <noscript>
+    <style>
+      .reveal-on-scroll { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+  
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23203238'/><text x='16' y='21' font-family='serif' font-size='15' font-weight='bold' fill='%23F0EEE8' text-anchor='middle'>FO</text></svg>">
+</head>
+<body>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ========================================================================
+       01. Site Header & Multi-Page Navigation
+       ======================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a href="index.html" class="header-brand" aria-label="Fasuba Olukunle — Home">
+        FASUBA <span>/</span> OLUKUNLE
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="header-nav" aria-label="Main Portfolio Navigation">
+        <a href="work.html" class="nav-link">Selected Work</a>
+        <a href="case-studies.html" class="nav-link active" aria-current="page">Case Studies</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="skills.html" class="nav-link">Skills</a>
+        <a href="contact.html" class="nav-cta">Get in Touch</a>
+      </nav>
+
+      <!-- Mobile Nav Toggle -->
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark theme" title="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+      </button>
+
+      <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+    <nav class="mobile-nav-links">
+      <a href="index.html">Home</a>
+      <a href="work.html">Selected Work</a>
+      <a href="case-studies.html" class="active">Case Studies</a>
+      <a href="about.html">About Kunle</a>
+      <a href="skills.html">Skills &amp; Tools</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="mobile-drawer-footer">
+      <span class="meta-eyebrow"><span class="dot-indicator"></span> FASUBA OLUKUNLE · LAGOS, NIGERIA</span>
+      <a href="mailto:fasubatimi@gmail.com" class="btn-text-link">fasubatimi@gmail.com ↗</a>
+    </div>
+  </div>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content">
+
+    <!-- ========================================================================
+         02. Page Header Banner & Jump Bar
+         ======================================================================== -->
+    <section class="page-header-banner" aria-label="Case Studies Banner">
+      <div class="container">
+        <div class="page-banner-grid">
+          <div class="page-banner-top">
+            <span class="meta-eyebrow"><span class="dot-indicator"></span> 02 / IN-DEPTH ENGINEERING</span>
+            <span class="editorial-badge">03 CASE STUDIES</span>
+          </div>
+          <h1 class="page-banner-title">Project Case Studies</h1>
+          <p class="page-banner-lead">
+            Architectural breakdowns, technical decisions, trade-offs, and lessons learned across my mobile and systems builds.
+          </p>
+
+          <!-- Quick Jump Anchor Bar -->
+          <nav class="page-jump-bar" aria-label="Quick jump to project case study">
+            <a href="#safealert" class="jump-pill">01. SafeAlert (Android &amp; Cloud) ↓</a>
+            <a href="#library-control" class="jump-pill">02. Library Control (Systems) ↓</a>
+            <a href="#dansamdolly" class="jump-pill">03. Dansamdolly (Inventory) ↓</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         03. Deep-Dive Case Studies
+         ======================================================================== -->
+    <div class="case-studies-section">
+      <div class="container">
+
+        <!-- ==================================================================
+             Case Study 01: SafeAlert (Featured Project)
+             ================================================================== -->
+        <article class="case-study-block" id="safealert">
+          <header class="case-header reveal-on-scroll">
+            <div class="case-header-meta">
+              <span class="case-project-num">PROJECT 01 · FEATURED APPLICATION</span>
+              <span class="case-status-badge">
+                <span class="meta-eyebrow"><span class="dot-indicator alert"></span> FUNCTIONAL ANDROID BUILD</span>
+              </span>
+            </div>
+            <h2 class="case-title">SafeAlert: Real-time Emergency Reporting &amp; Community Safety Network</h2>
+            <p class="case-tagline">
+              Instant coordinate broadcasting, nearby incident feeds, and low-friction mobile reporting for urban emergencies.
+            </p>
+          </header>
+
+          <div class="case-content-grid">
+            
+            <!-- Sticky Sidebar Facts -->
+            <aside class="case-sidebar">
+              <div class="case-fact-group">
+                <span class="case-fact-label">My Role</span>
+                <span class="case-fact-val">Mobile Developer &amp; System Architect</span>
+              </div>
+              <div class="case-fact-group">
+                <span class="case-fact-label">Project Type</span>
+                <span class="case-fact-val">Personal Engineering Build</span>
+              </div>
+              <div class="case-fact-group">
+                <span class="case-fact-label">Core Stack</span>
+                <div class="case-tech-tags">
+                  <span class="tech-tag">Java 17</span>
+                  <span class="tech-tag">Android SDK</span>
+                  <span class="tech-tag">Firebase Auth</span>
+                  <span class="tech-tag">Realtime DB</span>
+                  <span class="tech-tag">Cloud Storage</span>
+                  <span class="tech-tag">Google Sign-In</span>
+                  <span class="tech-tag">OSMDroid</span>
+                </div>
+              </div>
+              <div class="case-fact-group">
+                <span class="case-fact-label">Current Status</span>
+                <span class="case-fact-val">Core reporting &amp; live map functional; SMS daemon in roadmap.</span>
+              </div>
+              <div class="case-sidebar-actions">
+                <a href="https://github.com/fasubatimi" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                  View Profile on GitHub <span>↗</span>
+                </a>
+                <a href="work.html" class="btn-text-link">
+                  ← Back to Selected Work
+                </a>
+              </div>
+            </aside>
+
+            <!-- Main Narrative -->
+            <div class="case-main-narrative">
+              
+              <!-- Section: Problem Space -->
+              <section class="case-section-item reveal-on-scroll">
+                <h3>01. The Problem Space</h3>
+                <p>
+                  During an emergency—a street accident, neighborhood hazard, or safety threat—people need to share what is happening quickly and precisely. Traditional voice calls to emergency dispatch frequently suffer from congested lines, difficulty articulating exact street coordinates, and a lack of situational awareness for people nearby who might walk straight into danger.
+                </p>
+                <p>
+                  I built SafeAlert to solve a specific need: giving users an instantaneous, one-tap emergency mechanism that broadcasts verified incident data and device coordinates to nearby community members without requiring complicated manual input.
+                </p>
+              </section>
+
+              <!-- Section: Architecture & What Was Built -->
+              <section class="case-section-item reveal-on-scroll">
+                <h3>02. Architecture &amp; Implementation</h3>
+                <p>
+                  SafeAlert is built as a native Android application using modern Java 17 and structured around clear separation of responsibilities:
+                </p>
+
+                <!-- Annotated Architecture Diagram -->
+                <div class="editorial-diagram-card">
+                  <div class="diagram-header">
+                    <span>SYSTEM ARCHITECTURE DIAGRAM</span>
+                    <span>SAFEALERT · REPOSITORIES &amp; SERVICES</span>
+                  </div>
+                  <!-- Flat topology (visual); the text nodes below remain the accessible description -->
+                  <div class="arch-svg-wrap">
+                    <svg class="arch-svg" viewBox="0 0 760 300" aria-hidden="true" focusable="false">
+                      <defs>
+                        <marker id="arrowSA" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path class="arch-arrow" d="M0,0 L9,4.5 L0,9 Z"/></marker>
+                      </defs>
+                      <text class="arch-zone-label" x="430" y="20">FIREBASE · GOOGLE CLOUD</text>
+                      <rect class="arch-boundary" x="430" y="28" width="300" height="250" rx="4"/>
+                      <rect class="arch-box arch-box--accent" x="40" y="120" width="170" height="92" rx="3"/>
+                      <text class="arch-title" x="125" y="158" text-anchor="middle">Android Client</text>
+                      <text class="arch-sub" x="125" y="176" text-anchor="middle">Java 17 · XML · OSMDroid</text>
+                      <rect class="arch-box arch-box--muted" x="40" y="232" width="170" height="48" rx="3"/>
+                      <text class="arch-title" x="125" y="252" text-anchor="middle" font-size="11">OpenStreetMap Tiles</text>
+                      <text class="arch-sub" x="125" y="269" text-anchor="middle">OSMDroid · on-device cache</text>
+                      <rect class="arch-box" x="455" y="48" width="250" height="56" rx="3"/>
+                      <text class="arch-title" x="580" y="72" text-anchor="middle">Firebase Auth</text>
+                      <text class="arch-sub" x="580" y="90" text-anchor="middle">Google Sign-In · verified identity</text>
+                      <rect class="arch-box" x="455" y="120" width="250" height="56" rx="3"/>
+                      <text class="arch-title" x="580" y="144" text-anchor="middle">Realtime Database</text>
+                      <text class="arch-sub" x="580" y="162" text-anchor="middle">alerts · geohash index · status</text>
+                      <rect class="arch-box" x="455" y="192" width="250" height="56" rx="3"/>
+                      <text class="arch-title" x="580" y="216" text-anchor="middle">Cloud Storage</text>
+                      <text class="arch-sub" x="580" y="234" text-anchor="middle">compressed photo evidence</text>
+                      <line class="arch-flow" x1="210" y1="150" x2="451" y2="76" marker-end="url(#arrowSA)"/>
+                      <line class="arch-flow" x1="210" y1="166" x2="451" y2="148" marker-end="url(#arrowSA)"/>
+                      <line class="arch-flow" x1="210" y1="182" x2="451" y2="220" marker-end="url(#arrowSA)"/>
+                      <line class="arch-flow" x1="125" y1="212" x2="125" y2="230" marker-end="url(#arrowSA)"/>
+                      <text class="arch-flow-label" x="332" y="107" text-anchor="middle">auth · sign-in</text>
+                      <text class="arch-flow-label" x="332" y="151" text-anchor="middle">read · write alerts</text>
+                      <text class="arch-flow-label" x="330" y="208" text-anchor="middle">upload evidence</text>
+                      <text class="arch-flow-label" x="150" y="226" text-anchor="start">map tiles</text>
+                    </svg>
+                  </div>
+                  <div class="diagram-body">
+                    <div class="diagram-node active-node">
+                      <strong>01. Android Client</strong>
+                      <span>Java 17 / XML Layouts. Location Manager, Camera Intent, OSMDroid MapView overlay.</span>
+                    </div>
+                    <div class="diagram-node">
+                      <strong>02. Auth Gateway</strong>
+                      <span>Firebase Auth + Google Sign-In for verified user identity and spam deterrence.</span>
+                    </div>
+                    <div class="diagram-node">
+                      <strong>03. Realtime Database</strong>
+                      <span>Synchronized JSON tree of active alerts, geohash indexes, and verified status flags.</span>
+                    </div>
+                    <div class="diagram-node">
+                      <strong>04. Cloud Storage</strong>
+                      <span>Secure, compressed photographic evidence upload with timestamp metadata.</span>
+                    </div>
+                  </div>
+                  <div class="diagram-caption">
+                    Figure 1.1: Event-driven data flow between client triggers, auth validation, and real-time database synchronization.
+                  </div>
+                </div>
+
+                <ul class="case-list">
+                  <li>
+                    <strong>Instant 1-Tap SOS Dispatch:</strong> Pulls device GPS coordinates directly through Android Location Services and packages an alert payload in under 2 seconds.
+                  </li>
+                  <li>
+                    <strong>Live Incident Discovery Feed:</strong> Reads from a synchronized Firebase Realtime Database node, ordering incidents by proximity and recency.
+                  </li>
+                  <li>
+                    <strong>OpenStreetMap (OSMDroid) Integration:</strong> Displays local street-level cartography using open map data, with customizable incident pins and radius overlays.
+                  </li>
+                  <li>
+                    <strong>Media Evidence Upload:</strong> Compresses on-scene camera capture and uploads directly to Firebase Storage with secure reference keys.
+                  </li>
+                </ul>
+              </section>
+
+              <!-- Section: Engineering Decisions -->
+              <section class="case-section-item reveal-on-scroll">
+                <h3>03. Key Engineering Decisions</h3>
+                <p>
+                  <strong>Why Firebase Realtime Database over Cloud Firestore:</strong> For an emergency notification loop, raw socket synchronization latency matters more than complex querying. Firebase Realtime DB provides immediate low-overhead listener callbacks and robust offline caching on mobile devices when network packets drop in cellular dead zones.
+                </p>
+                <p>
+                  <strong>Why OSMDroid over Google Maps SDK:</strong> Eliminating proprietary commercial map dependencies removed billing requirements and API key restrictions, while allowing cached map tiles to remain readable during spotty data connectivity.
+                </p>
+                <p>
+                  <strong>Safety-First UI Decisions:</strong> High-contrast color hierarchy with oversized tactile buttons prevents mis-taps during stressful situations. The primary SOS button is physically separated from navigation elements to avoid accidental triggers.
+                </p>
+              </section>
+
+              <!-- Section: What I Learned -->
+              <section class="case-section-item reveal-on-scroll">
+                <h3>04. What I Learned &amp; Next Steps</h3>
+                <p>
+                  Building SafeAlert taught me how to manage Android foreground services, asynchronous network calls under unstable connectivity, and the importance of defensive error handling in applications where failure is not an option.
+                </p>
+                <p>
+                  <strong>Current Roadmap:</strong> The core reporting and map viewing workflows are fully built. Next steps include implementing background push notifications via Firebase Cloud Messaging (FCM) and a fallback SMS dispatch protocol for zero-data scenarios.
+                </p>
+              </section>
+
+            </div>
+
+          </div>
+
+          <!-- Interface Gallery: real screenshots from the running Android build -->
+          <section class="case-gallery-block reveal-on-scroll" aria-label="SafeAlert interface gallery">
+            <div class="case-gallery-head">
+              <span class="meta-eyebrow"><span class="dot-indicator alert"></span> INTERFACE · CAPTURED FROM THE RUNNING BUILD</span>
+              <h3 class="case-gallery-title">Inside the app</h3>
+            </div>
+            <div class="case-gallery case-gallery--phone" data-lightbox-gallery>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/safealert/gallery/01-login.webp" data-lightbox-caption="SafeAlert — Secure login">
+                  <picture><source srcset="assets/safealert/gallery/01-login.webp" type="image/webp"><img width="1080" height="2400" src="assets/safealert/gallery/01-login.png" alt="SafeAlert secure login screen" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Secure login</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/safealert/gallery/02-register.webp" data-lightbox-caption="SafeAlert — Account sign-up">
+                  <picture><source srcset="assets/safealert/gallery/02-register.webp" type="image/webp"><img width="1080" height="2400" src="assets/safealert/gallery/02-register.png" alt="SafeAlert account registration screen" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Account sign-up</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/safealert/gallery/03-dashboard.webp" data-lightbox-caption="SafeAlert — Safety dashboard">
+                  <picture><source srcset="assets/safealert/gallery/03-dashboard.webp" type="image/webp"><img width="1080" height="2400" src="assets/safealert/gallery/03-dashboard.png" alt="SafeAlert dashboard with alert banner and nearby incidents" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Safety dashboard</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/safealert/gallery/04-map.webp" data-lightbox-caption="SafeAlert — Live incident map">
+                  <picture><source srcset="assets/safealert/gallery/04-map.webp" type="image/webp"><img width="1080" height="2400" src="assets/safealert/gallery/04-map.png" alt="SafeAlert live incident map with pins" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Live incident map</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/safealert/gallery/05-alerts.webp" data-lightbox-caption="SafeAlert — Nearby alerts feed">
+                  <picture><source srcset="assets/safealert/gallery/05-alerts.webp" type="image/webp"><img width="1080" height="2400" src="assets/safealert/gallery/05-alerts.png" alt="SafeAlert nearby alerts feed" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Nearby alerts</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/safealert/gallery/06-report.webp" data-lightbox-caption="SafeAlert — One-tap incident report">
+                  <picture><source srcset="assets/safealert/gallery/06-report.webp" type="image/webp"><img width="1080" height="2400" src="assets/safealert/gallery/06-report.png" alt="SafeAlert incident reporting form" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Report an incident</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/safealert/gallery/07-contacts.webp" data-lightbox-caption="SafeAlert — Emergency contacts">
+                  <picture><source srcset="assets/safealert/gallery/07-contacts.webp" type="image/webp"><img width="1080" height="2400" src="assets/safealert/gallery/07-contacts.png" alt="SafeAlert emergency contacts list" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Emergency contacts</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/safealert/gallery/08-my-reports.webp" data-lightbox-caption="SafeAlert — My submitted reports">
+                  <picture><source srcset="assets/safealert/gallery/08-my-reports.webp" type="image/webp"><img width="1080" height="2400" src="assets/safealert/gallery/08-my-reports.png" alt="SafeAlert list of the user's submitted reports" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>My reports</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/safealert/gallery/09-more.webp" data-lightbox-caption="SafeAlert — Settings &amp; more">
+                  <picture><source srcset="assets/safealert/gallery/09-more.webp" type="image/webp"><img width="1080" height="2400" src="assets/safealert/gallery/09-more.png" alt="SafeAlert settings and more menu" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Settings &amp; more</figcaption>
+              </figure>
+            </div>
+          </section>
+        </article>
+
+        <!-- ==================================================================
+             Case Study 02: Library Control
+             ================================================================== -->
+        <article class="case-study-block" id="library-control">
+          <header class="case-header reveal-on-scroll">
+            <div class="case-header-meta">
+              <span class="case-project-num">PROJECT 02 · SYSTEMS &amp; INFRASTRUCTURE</span>
+              <span class="case-status-badge">
+                <span class="meta-eyebrow"><span class="dot-indicator" style="background-color: var(--color-dot-systems);"></span> FUNCTIONAL WEB BUILD</span>
+              </span>
+            </div>
+            <h2 class="case-title">Library Control: Centralized Terminal Management for Academic Libraries</h2>
+            <p class="case-tagline">
+              A lightweight, non-intrusive terminal orchestration system providing research librarians with real-time workstation status and immediate session locking.
+            </p>
+          </header>
+
+          <div class="case-content-grid">
+            
+            <!-- Sticky Sidebar Facts -->
+            <aside class="case-sidebar">
+              <div class="case-fact-group">
+                <span class="case-fact-label">My Role</span>
+                <span class="case-fact-val">Systems Designer &amp; Prototype Developer</span>
+              </div>
+              <div class="case-fact-group">
+                <span class="case-fact-label">Project Type</span>
+                <span class="case-fact-val">Infrastructure &amp; Tooling Concept</span>
+              </div>
+              <div class="case-fact-group">
+                <span class="case-fact-label">Core Stack</span>
+                <div class="case-tech-tags">
+                  <span class="tech-tag">React 19</span>
+                  <span class="tech-tag">TypeScript</span>
+                  <span class="tech-tag">Vite</span>
+                  <span class="tech-tag">FastAPI (Python)</span>
+                  <span class="tech-tag">SQLite</span>
+                  <span class="tech-tag">JWT Auth</span>
+                </div>
+              </div>
+              <div class="case-fact-group">
+                <span class="case-fact-label">Current Status</span>
+                <span class="case-fact-val">Functional web admin build running against seeded workstation data.</span>
+              </div>
+              <div class="case-sidebar-actions">
+                <a href="work.html" class="btn-text-link">
+                  ← Back to Selected Work
+                </a>
+              </div>
+            </aside>
+
+            <!-- Main Narrative -->
+            <div class="case-main-narrative">
+              
+              <!-- Section: The Problem -->
+              <section class="case-section-item reveal-on-scroll">
+                <h3>01. The Problem in Academic Libraries</h3>
+                <p>
+                  University research libraries provide shared Windows terminals across multiple floors. Librarians face regular challenges: students exceeding allocated time limits, terminals left abandoned in locked states, and the tedious requirement at closing hours for staff to physically walk to dozens of desks to log off or shut down terminals.
+                </p>
+                <p>
+                  Commercial cyber-cafe or enterprise management suites are prohibitively expensive, heavy on memory consumption, and often package invasive surveillance tools that violate student privacy.
+                </p>
+              </section>
+
+              <!-- Section: Dual-Tier Architecture -->
+              <section class="case-section-item reveal-on-scroll">
+                <h3>02. Dual-Tier System Architecture</h3>
+                <p>
+                  Library Control is architected as a lean, privacy-conscious dual-tier system:
+                </p>
+
+                <div class="editorial-diagram-card">
+                  <div class="diagram-header">
+                    <span>TOPOLOGY DIAGRAM</span>
+                    <span>LIBRARY CONTROL · LOCAL AREA NETWORK</span>
+                  </div>
+                  <!-- Flat topology (visual); the text nodes below remain the accessible description -->
+                  <div class="arch-svg-wrap">
+                    <svg class="arch-svg" viewBox="0 0 760 250" aria-hidden="true" focusable="false">
+                      <defs>
+                        <marker id="arrowLC" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path class="arch-arrow" d="M0,0 L9,4.5 L0,9 Z"/></marker>
+                      </defs>
+                      <text class="arch-zone-label" x="24" y="26">LIBRARY LAN · ZERO CLOUD</text>
+                      <rect class="arch-boundary" x="20" y="36" width="720" height="196" rx="4"/>
+                      <rect class="arch-box arch-box--accent" x="46" y="92" width="182" height="92" rx="3"/>
+                      <text class="arch-title" x="137" y="130" text-anchor="middle" font-size="12">Librarian Web Console</text>
+                      <text class="arch-sub" x="137" y="149" text-anchor="middle">React 19 · TypeScript · Vite</text>
+                      <rect class="arch-box" x="292" y="92" width="182" height="92" rx="3"/>
+                      <text class="arch-title" x="383" y="130" text-anchor="middle">Coordinator API</text>
+                      <text class="arch-sub" x="383" y="149" text-anchor="middle">FastAPI · SQLite · JWT</text>
+                      <rect class="arch-box arch-box--muted" x="556" y="82" width="150" height="72" rx="3"/>
+                      <rect class="arch-box arch-box--muted" x="550" y="88" width="150" height="72" rx="3"/>
+                      <rect class="arch-box" x="544" y="94" width="150" height="72" rx="3"/>
+                      <text class="arch-title" x="619" y="124" text-anchor="middle" font-size="12">Windows Agents</text>
+                      <text class="arch-sub" x="619" y="142" text-anchor="middle">lock / unlock · ×N</text>
+                      <line class="arch-flow" x1="228" y1="126" x2="288" y2="126" marker-end="url(#arrowLC)"/>
+                      <line class="arch-flow" x1="292" y1="150" x2="232" y2="150" marker-end="url(#arrowLC)"/>
+                      <line class="arch-flow" x1="474" y1="126" x2="540" y2="126" marker-end="url(#arrowLC)"/>
+                      <line class="arch-flow" x1="544" y1="150" x2="478" y2="150" marker-end="url(#arrowLC)"/>
+                      <text class="arch-flow-label" x="258" y="116" text-anchor="middle">HTTP · JWT</text>
+                      <text class="arch-flow-label" x="509" y="116" text-anchor="middle">heartbeats</text>
+                    </svg>
+                  </div>
+                  <div class="diagram-body">
+                    <div class="diagram-node active-node">
+                      <strong>Librarian Web Console</strong>
+                      <span>Browser dashboard running on librarian desk. Displays real-time terminal grid with status indicators (Active, Idle, Locked).</span>
+                    </div>
+                    <div class="diagram-node">
+                      <strong>Local Coordinator API</strong>
+                      <span>Lightweight LAN broker managing terminal heartbeats, session timers, and broadcast command dispatch.</span>
+                    </div>
+                    <div class="diagram-node">
+                      <strong>Windows Client Agent</strong>
+                      <span>Minimal background daemon running on each workstation. Listens for lock/unlock signals via native Windows APIs.</span>
+                    </div>
+                  </div>
+                  <div class="diagram-caption">
+                    Figure 2.1: LAN-based command hierarchy ensuring zero external cloud reliance.
+                  </div>
+                </div>
+
+                <ul class="case-list">
+                  <li>
+                    <strong>Zero Cloud Reliance:</strong> The entire stack communicates over the library's local area network (LAN), ensuring total privacy and immunity to external internet outages.
+                  </li>
+                  <li>
+                    <strong>Single &amp; Global Actions:</strong> Librarians can lock/unlock individual terminals by workstation ID or trigger a global "Closing Time Curfew" lockdown with one click.
+                  </li>
+                  <li>
+                    <strong>Minimal Footprint:</strong> The background agent consumes negligible system resources (&lt;15MB RAM), preserving full workstation performance for student research.
+                  </li>
+                </ul>
+              </section>
+
+              <!-- Section: Engineering & Security Choices -->
+              <section class="case-section-item reveal-on-scroll">
+                <h3>03. Security &amp; Fail-Safe Logic</h3>
+                <p>
+                  A critical design requirement is fail-safe resilience. If a student disconnects the Ethernet cable to bypass the daemon, the client agent enters a disconnect grace period (e.g. 60 seconds) before automatically enforcing a local lock screen until reconnection.
+                </p>
+                <p>
+                  <strong>Current Status:</strong> The librarian web console and coordinator API are built and functional (shown below), covering the live workstation grid, active sessions, session history, audit logging, and user administration against seeded terminal data. The per-workstation lock/unlock agent is the next integration milestone.
+                </p>
+              </section>
+
+            </div>
+
+          </div>
+
+          <!-- Interface Gallery: real screenshots from the running web admin -->
+          <section class="case-gallery-block reveal-on-scroll" aria-label="Library Control interface gallery">
+            <div class="case-gallery-head">
+              <span class="meta-eyebrow"><span class="dot-indicator" style="background-color: var(--color-dot-systems);"></span> INTERFACE · CAPTURED FROM THE RUNNING WEB ADMIN</span>
+              <h3 class="case-gallery-title">The librarian console</h3>
+            </div>
+            <div class="case-gallery case-gallery--web" data-lightbox-gallery>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/library-control/gallery/01-login.webp" data-lightbox-caption="Library Control — Librarian sign-in">
+                  <picture><source srcset="assets/library-control/gallery/01-login.webp" type="image/webp"><img width="2880" height="1800" src="assets/library-control/gallery/01-login.png" alt="Library Control librarian sign-in screen" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Librarian sign-in</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/library-control/gallery/02-dashboard.webp" data-lightbox-caption="Library Control — Control dashboard">
+                  <picture><source srcset="assets/library-control/gallery/02-dashboard.webp" type="image/webp"><img width="2880" height="1960" src="assets/library-control/gallery/02-dashboard.png" alt="Library Control dashboard overview" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Control dashboard</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/library-control/gallery/03-computers.webp" data-lightbox-caption="Library Control — Workstation grid">
+                  <picture><source srcset="assets/library-control/gallery/03-computers.webp" type="image/webp"><img width="2880" height="1800" src="assets/library-control/gallery/03-computers.png" alt="Library Control workstation status grid" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Workstation grid</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/library-control/gallery/04-active-sessions.webp" data-lightbox-caption="Library Control — Active sessions">
+                  <picture><source srcset="assets/library-control/gallery/04-active-sessions.webp" type="image/webp"><img width="2880" height="1800" src="assets/library-control/gallery/04-active-sessions.png" alt="Library Control active sessions view" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Active sessions</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/library-control/gallery/05-session-history.webp" data-lightbox-caption="Library Control — Session history">
+                  <picture><source srcset="assets/library-control/gallery/05-session-history.webp" type="image/webp"><img width="2880" height="2372" src="assets/library-control/gallery/05-session-history.png" alt="Library Control session history log" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Session history</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/library-control/gallery/06-audit-logs.webp" data-lightbox-caption="Library Control — Audit log">
+                  <picture><source srcset="assets/library-control/gallery/06-audit-logs.webp" type="image/webp"><img width="2880" height="5150" src="assets/library-control/gallery/06-audit-logs.png" alt="Library Control audit log entries" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Audit log</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/library-control/gallery/07-users.webp" data-lightbox-caption="Library Control — User management">
+                  <picture><source srcset="assets/library-control/gallery/07-users.webp" type="image/webp"><img width="2880" height="1800" src="assets/library-control/gallery/07-users.png" alt="Library Control user management screen" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>User management</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/library-control/gallery/08-settings.webp" data-lightbox-caption="Library Control — System settings">
+                  <picture><source srcset="assets/library-control/gallery/08-settings.webp" type="image/webp"><img width="2880" height="1800" src="assets/library-control/gallery/08-settings.png" alt="Library Control system settings" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>System settings</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/library-control/gallery/09-system-status.webp" data-lightbox-caption="Library Control — System status">
+                  <picture><source srcset="assets/library-control/gallery/09-system-status.webp" type="image/webp"><img width="2880" height="1800" src="assets/library-control/gallery/09-system-status.png" alt="Library Control system status page" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>System status</figcaption>
+              </figure>
+            </div>
+          </section>
+        </article>
+
+        <!-- ==================================================================
+             Case Study 03: Dansamdolly
+             ================================================================== -->
+        <article class="case-study-block" id="dansamdolly">
+          <header class="case-header reveal-on-scroll">
+            <div class="case-header-meta">
+              <span class="case-project-num">PROJECT 03 · INVENTORY &amp; BUSINESS SOFTWARE</span>
+              <span class="case-status-badge">
+                <span class="meta-eyebrow"><span class="dot-indicator" style="background-color: var(--color-dot-business);"></span> COMPLETED BUILD</span>
+              </span>
+            </div>
+            <h2 class="case-title">Dansamdolly: Inventory &amp; Stock Management System</h2>
+            <p class="case-tagline">
+              An inventory and stock management system that turns multi-stakeholder requirements into structured, reliable software components.
+            </p>
+          </header>
+
+          <div class="case-content-grid">
+            
+            <!-- Sticky Sidebar Facts -->
+            <aside class="case-sidebar">
+              <div class="case-fact-group">
+                <span class="case-fact-label">My Role</span>
+                <span class="case-fact-val">Developer</span>
+              </div>
+              <div class="case-fact-group">
+                <span class="case-fact-label">Project Type</span>
+                <span class="case-fact-val">Inventory Management System</span>
+              </div>
+              <div class="case-fact-group">
+                <span class="case-fact-label">Core Stack</span>
+                <div class="case-tech-tags">
+                  <span class="tech-tag">Java 17</span>
+                  <span class="tech-tag">Spring Boot</span>
+                  <span class="tech-tag">Thymeleaf</span>
+                  <span class="tech-tag">Spring Security</span>
+                  <span class="tech-tag">JPA / Hibernate</span>
+                  <span class="tech-tag">MySQL</span>
+                </div>
+              </div>
+              <div class="case-fact-group">
+                <span class="case-fact-label">Current Status</span>
+                <span class="case-fact-val">Completed build.</span>
+              </div>
+              <div class="case-sidebar-actions">
+                <a href="work.html" class="btn-text-link">
+                  ← Back to Selected Work
+                </a>
+              </div>
+            </aside>
+
+            <!-- Main Narrative -->
+            <div class="case-main-narrative">
+              
+              <!-- Section: Overview -->
+              <section class="case-section-item reveal-on-scroll">
+                <h3>01. Project Overview</h3>
+                <p>
+                  Dansamdolly is a Spring Boot web application for inventory and stock management, covering products and categories, stock valuation and low-stock alerts, sales and invoicing, customers and suppliers, warehouses, purchase orders, and reporting. The goal was not just functional code, but disciplined engineering: rigorous specification analysis, modular decoupling, and verifiable implementation against strict constraints.
+                </p>
+
+                <!-- Annotated Architecture Diagram (layered Spring MVC) -->
+                <div class="editorial-diagram-card">
+                  <div class="diagram-header">
+                    <span>LAYERED ARCHITECTURE DIAGRAM</span>
+                    <span>DANSAMDOLLY · SPRING BOOT MVC</span>
+                  </div>
+                  <!-- Flat topology (visual); the text nodes below remain the accessible description -->
+                  <div class="arch-svg-wrap">
+                    <svg class="arch-svg" viewBox="0 0 760 390" aria-hidden="true" focusable="false">
+                      <defs>
+                        <marker id="arrowDD" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path class="arch-arrow" d="M0,0 L9,4.5 L0,9 Z"/></marker>
+                      </defs>
+                      <rect class="arch-box arch-box--accent" x="150" y="18" width="480" height="52" rx="3"/>
+                      <text class="arch-title" x="390" y="42" text-anchor="middle">Browser · Thymeleaf Views</text>
+                      <text class="arch-sub" x="390" y="59" text-anchor="middle">server-rendered HTML</text>
+                      <rect class="arch-box arch-box--accent" x="42" y="92" width="88" height="200" rx="3"/>
+                      <text class="arch-title" x="86" y="192" text-anchor="middle" font-size="11" transform="rotate(-90 86 192)">SPRING SECURITY</text>
+                      <rect class="arch-box" x="150" y="92" width="480" height="52" rx="3"/>
+                      <text class="arch-title" x="390" y="116" text-anchor="middle">Spring MVC Controllers</text>
+                      <text class="arch-sub" x="390" y="133" text-anchor="middle">@Controller · request routing</text>
+                      <rect class="arch-box" x="150" y="166" width="480" height="52" rx="3"/>
+                      <text class="arch-title" x="390" y="190" text-anchor="middle">Service Layer</text>
+                      <text class="arch-sub" x="390" y="207" text-anchor="middle">business logic · validation</text>
+                      <rect class="arch-box" x="150" y="240" width="480" height="52" rx="3"/>
+                      <text class="arch-title" x="390" y="264" text-anchor="middle">Repositories</text>
+                      <text class="arch-sub" x="390" y="281" text-anchor="middle">Spring Data JPA</text>
+                      <rect class="arch-box arch-box--muted" x="150" y="314" width="480" height="52" rx="3"/>
+                      <text class="arch-title" x="390" y="338" text-anchor="middle">MySQL Database</text>
+                      <text class="arch-sub" x="390" y="355" text-anchor="middle">Hibernate ORM · relational</text>
+                      <line class="arch-flow" x1="390" y1="70" x2="390" y2="90" marker-end="url(#arrowDD)"/>
+                      <line class="arch-flow" x1="390" y1="144" x2="390" y2="164" marker-end="url(#arrowDD)"/>
+                      <line class="arch-flow" x1="390" y1="218" x2="390" y2="238" marker-end="url(#arrowDD)"/>
+                      <line class="arch-flow" x1="390" y1="292" x2="390" y2="312" marker-end="url(#arrowDD)"/>
+                      <text class="arch-flow-label" x="404" y="84" text-anchor="start">HTTP request / render</text>
+                      <text class="arch-flow-label" x="404" y="158" text-anchor="start">delegates to services</text>
+                      <text class="arch-flow-label" x="404" y="232" text-anchor="start">repository calls</text>
+                      <text class="arch-flow-label" x="404" y="306" text-anchor="start">JPA · Hibernate → SQL</text>
+                    </svg>
+                  </div>
+                  <div class="diagram-body">
+                    <div class="diagram-node active-node">
+                      <strong>Thymeleaf Views</strong>
+                      <span>Server-rendered HTML templates delivering the admin console to the browser.</span>
+                    </div>
+                    <div class="diagram-node">
+                      <strong>Controllers + Security</strong>
+                      <span>Spring MVC controllers behind Spring Security route requests and enforce authenticated, role-aware access.</span>
+                    </div>
+                    <div class="diagram-node">
+                      <strong>Service Layer</strong>
+                      <span>Business logic for products, sales, invoicing, and stock — isolated from web and persistence concerns.</span>
+                    </div>
+                    <div class="diagram-node">
+                      <strong>JPA / MySQL</strong>
+                      <span>Spring Data JPA repositories persist domain entities to MySQL through Hibernate ORM.</span>
+                    </div>
+                  </div>
+                  <div class="diagram-caption">
+                    Figure 3.1: Layered Spring Boot MVC flow — views to controllers to services to repositories, with Spring Security as a cross-cutting gate.
+                  </div>
+                </div>
+              </section>
+
+              <!-- Section: What Was Built & Learned -->
+              <section class="case-section-item reveal-on-scroll">
+                <h3>02. Engineering Principles Applied</h3>
+                <ul class="case-list">
+                  <li>
+                    <strong>Requirements Engineering:</strong> Translating ambiguous user stories into precise functional requirements, boundary conditions, and test cases.
+                  </li>
+                  <li>
+                    <strong>Separation of Concerns:</strong> Isolating core business logic from input handling and data presentation, allowing individual modules to be modified without cascading bugs.
+                  </li>
+                  <li>
+                    <strong>Collaborative Version Control:</strong> Managing branch structures, resolving merge conflicts, and conducting structured peer code reviews across a small team.
+                  </li>
+                </ul>
+              </section>
+
+              <!-- Section: Key Takeaway -->
+              <section class="case-section-item reveal-on-scroll">
+                <h3>03. Key Takeaway</h3>
+                <p>
+                  Building Dansamdolly reinforced that maintainability, clear naming, edge-case validation, and structured documentation matter just as much as raw functionality—especially in software that manages real inventory and stock data.
+                </p>
+              </section>
+
+            </div>
+
+          </div>
+
+          <!-- Interface Gallery: real screenshots from the running Spring Boot build -->
+          <section class="case-gallery-block reveal-on-scroll" aria-label="Dansamdolly interface gallery">
+            <div class="case-gallery-head">
+              <span class="meta-eyebrow"><span class="dot-indicator" style="background-color: var(--color-dot-business);"></span> INTERFACE · CAPTURED FROM THE RUNNING BUILD</span>
+              <h3 class="case-gallery-title">The management system</h3>
+            </div>
+            <div class="case-gallery case-gallery--web" data-lightbox-gallery>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/dansamdolly/gallery/01-login.webp" data-lightbox-caption="Dansamdolly — Secure sign-in">
+                  <picture><source srcset="assets/dansamdolly/gallery/01-login.webp" type="image/webp"><img width="2880" height="1800" src="assets/dansamdolly/gallery/01-login.png" alt="Dansamdolly login screen" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Secure sign-in</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/dansamdolly/gallery/02-dashboard.webp" data-lightbox-caption="Dansamdolly — Operations dashboard">
+                  <picture><source srcset="assets/dansamdolly/gallery/02-dashboard.webp" type="image/webp"><img width="2880" height="3658" src="assets/dansamdolly/gallery/02-dashboard.png" alt="Dansamdolly operations dashboard with key figures" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Operations dashboard</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/dansamdolly/gallery/03-products.webp" data-lightbox-caption="Dansamdolly — Product inventory">
+                  <picture><source srcset="assets/dansamdolly/gallery/03-products.webp" type="image/webp"><img width="2880" height="1800" src="assets/dansamdolly/gallery/03-products.png" alt="Dansamdolly product inventory table" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Product inventory</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/dansamdolly/gallery/04-low-stock.webp" data-lightbox-caption="Dansamdolly — Low-stock alerts">
+                  <picture><source srcset="assets/dansamdolly/gallery/04-low-stock.webp" type="image/webp"><img width="2880" height="1800" src="assets/dansamdolly/gallery/04-low-stock.png" alt="Dansamdolly low-stock alerts view" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Low-stock alerts</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/dansamdolly/gallery/05-sales.webp" data-lightbox-caption="Dansamdolly — Sales records">
+                  <picture><source srcset="assets/dansamdolly/gallery/05-sales.webp" type="image/webp"><img width="2880" height="1800" src="assets/dansamdolly/gallery/05-sales.png" alt="Dansamdolly sales records" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Sales records</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/dansamdolly/gallery/06-invoices.webp" data-lightbox-caption="Dansamdolly — Invoices">
+                  <picture><source srcset="assets/dansamdolly/gallery/06-invoices.webp" type="image/webp"><img width="2880" height="1800" src="assets/dansamdolly/gallery/06-invoices.png" alt="Dansamdolly invoices list" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Invoices</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/dansamdolly/gallery/07-customers.webp" data-lightbox-caption="Dansamdolly — Customers">
+                  <picture><source srcset="assets/dansamdolly/gallery/07-customers.webp" type="image/webp"><img width="2880" height="1800" src="assets/dansamdolly/gallery/07-customers.png" alt="Dansamdolly customers directory" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Customers</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/dansamdolly/gallery/08-suppliers.webp" data-lightbox-caption="Dansamdolly — Suppliers">
+                  <picture><source srcset="assets/dansamdolly/gallery/08-suppliers.webp" type="image/webp"><img width="2880" height="1800" src="assets/dansamdolly/gallery/08-suppliers.png" alt="Dansamdolly suppliers directory" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Suppliers</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/dansamdolly/gallery/09-warehouses.webp" data-lightbox-caption="Dansamdolly — Warehouses">
+                  <picture><source srcset="assets/dansamdolly/gallery/09-warehouses.webp" type="image/webp"><img width="2880" height="1800" src="assets/dansamdolly/gallery/09-warehouses.png" alt="Dansamdolly warehouses view" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Warehouses</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/dansamdolly/gallery/10-purchases.webp" data-lightbox-caption="Dansamdolly — Purchase orders">
+                  <picture><source srcset="assets/dansamdolly/gallery/10-purchases.webp" type="image/webp"><img width="2880" height="1800" src="assets/dansamdolly/gallery/10-purchases.png" alt="Dansamdolly purchase orders" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Purchase orders</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/dansamdolly/gallery/11-reports-stock.webp" data-lightbox-caption="Dansamdolly — Stock valuation report">
+                  <picture><source srcset="assets/dansamdolly/gallery/11-reports-stock.webp" type="image/webp"><img width="2880" height="1800" src="assets/dansamdolly/gallery/11-reports-stock.png" alt="Dansamdolly stock valuation report" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Stock report</figcaption>
+              </figure>
+              <figure class="shot">
+                <button type="button" class="shot-btn" data-lightbox-src="assets/dansamdolly/gallery/12-reports-sales.webp" data-lightbox-caption="Dansamdolly — Sales report">
+                  <picture><source srcset="assets/dansamdolly/gallery/12-reports-sales.webp" type="image/webp"><img width="2880" height="1800" src="assets/dansamdolly/gallery/12-reports-sales.png" alt="Dansamdolly sales report" loading="lazy" decoding="async"></picture>
+                </button>
+                <figcaption>Sales report</figcaption>
+              </figure>
+            </div>
+          </section>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================
+         04. Next Navigation Teaser
+         ======================================================================== -->
+    <section class="home-section-teaser" aria-label="Next Step Navigation">
+      <div class="container">
+        <div class="teaser-grid reveal-on-scroll">
+          <div>
+            <span class="meta-eyebrow"><span class="dot-indicator"></span> NEXT SECTION</span>
+            <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: 6px;">Learn more about Kunle's path &amp; background.</h2>
+            <p style="max-width: 580px; margin-top: 10px;">
+              Read about my work as a software developer in Lagos, my engineering philosophy, and the kinds of roles I am seeking.
+            </p>
+          </div>
+          <a href="about.html" class="btn-primary">
+            Read About Kunle →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       05. Site Footer & Colophon
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>FASUBA / OLUKUNLE</h3>
+          <p>
+            Software developer building practical, reliable software in Lagos, Nigeria.
+          </p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer Navigation">
+          <h4>Pages</h4>
+          <a href="index.html">Home</a>
+          <a href="work.html">Selected Work</a>
+          <a href="case-studies.html">Case Studies</a>
+          <a href="about.html">About Kunle</a>
+          <a href="skills.html">Skills &amp; Toolkit</a>
+          <a href="contact.html">Contact &amp; Inquiries</a>
+        </nav>
+
+        <nav class="footer-nav" aria-label="External Profiles">
+          <h4>Profiles</h4>
+          <a href="https://github.com/fasubatimi" target="_blank" rel="noopener noreferrer">GitHub (fasubatimi) ↗</a>
+          <a href="mailto:fasubatimi@gmail.com">fasubatimi@gmail.com ↗</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Fasuba Olukunle. All rights reserved.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Main Interactive JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>

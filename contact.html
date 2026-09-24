@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F0EEE8">
+
+  <!-- No-flash theme init: set data-theme before first paint -->
+  <script>
+    (function () {
+      try {
+        var s = localStorage.getItem('theme');
+        var d = s ? s === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (d) document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
+  
+  <!-- Primary Meta Tags -->
+  <title>Contact &amp; Inquiries — Fasuba Olukunle</title>
+  <meta name="title" content="Contact &amp; Inquiries — Fasuba Olukunle">
+  <meta name="description" content="Get in touch with software developer Fasuba Olukunle for software engineering roles, projects, and collaborations.">
+  <meta name="author" content="Fasuba Olukunle">
+
+  <!-- Canonical & Social (Open Graph / Twitter) -->
+  <link rel="canonical" href="https://fasubatimi.github.io/portfolio/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fasuba Olukunle — Portfolio">
+  <meta property="og:url" content="https://fasubatimi.github.io/portfolio/contact.html">
+  <meta property="og:title" content="Contact &amp; Inquiries — Fasuba Olukunle">
+  <meta property="og:description" content="Get in touch with software developer Fasuba Olukunle for software engineering roles, projects, and collaborations.">
+  <meta property="og:image" content="https://fasubatimi.github.io/portfolio/assets/og/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Fasuba Olukunle — Software Developer, Lagos, Nigeria">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact &amp; Inquiries — Fasuba Olukunle">
+  <meta name="twitter:description" content="Get in touch with software developer Fasuba Olukunle for software engineering roles, projects, and collaborations.">
+  <meta name="twitter:image" content="https://fasubatimi.github.io/portfolio/assets/og/og-cover.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Editorial Design System (ZERO GRADIENTS) -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Progressive-enhancement safeguard: show reveal content if JS is disabled -->
+  <noscript>
+    <style>
+      .reveal-on-scroll { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+  
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23203238'/><text x='16' y='21' font-family='serif' font-size='15' font-weight='bold' fill='%23F0EEE8' text-anchor='middle'>FO</text></svg>">
+</head>
+<body>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ========================================================================
+       01. Site Header & Multi-Page Navigation
+       ======================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a href="index.html" class="header-brand" aria-label="Fasuba Olukunle — Home">
+        FASUBA <span>/</span> OLUKUNLE
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="header-nav" aria-label="Main Portfolio Navigation">
+        <a href="work.html" class="nav-link">Selected Work</a>
+        <a href="case-studies.html" class="nav-link">Case Studies</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="skills.html" class="nav-link">Skills</a>
+        <a href="contact.html" class="nav-cta active" aria-current="page">Get in Touch</a>
+      </nav>
+
+      <!-- Mobile Nav Toggle -->
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark theme" title="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+      </button>
+
+      <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+    <nav class="mobile-nav-links">
+      <a href="index.html">Home</a>
+      <a href="work.html">Selected Work</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="about.html">About Kunle</a>
+      <a href="skills.html">Skills &amp; Tools</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <div class="mobile-drawer-footer">
+      <span class="meta-eyebrow"><span class="dot-indicator"></span> FASUBA OLUKUNLE · LAGOS, NIGERIA</span>
+      <a href="mailto:fasubatimi@gmail.com" class="btn-text-link">fasubatimi@gmail.com ↗</a>
+    </div>
+  </div>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content">
+
+    <!-- ========================================================================
+         02. Page Header Banner
+         ======================================================================== -->
+    <section class="page-header-banner" aria-label="Contact Banner">
+      <div class="container">
+        <div class="page-banner-grid">
+          <div class="page-banner-top">
+            <span class="meta-eyebrow"><span class="dot-indicator"></span> 05 / GET IN TOUCH</span>
+            <span class="editorial-badge">OPEN TO WORK</span>
+          </div>
+          <h1 class="page-banner-title">Let’s build something dependable together.</h1>
+          <p class="page-banner-lead">
+            I am currently open to software engineering roles. If you have an opening, a project to collaborate on, or would like to review my code, reach out directly.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         03. Contact Channels & Direct Composer Section
+         ======================================================================== -->
+    <section class="contact-section" aria-label="Contact Channels">
+      <div class="container">
+        <div class="contact-grid" data-stagger="0.12">
+
+          <!-- Contact Narrative & Verified Links -->
+          <div class="contact-info reveal-on-scroll">
+            <div class="meta-eyebrow">
+              <span class="dot-indicator"></span> VERIFIED CHANNELS
+            </div>
+            <h2 class="contact-heading" style="font-size: clamp(2rem, 3.4vw, 2.8rem);">Direct Communication</h2>
+            <p class="contact-lead">
+              Feel free to send an email directly or connect on GitHub.
+            </p>
+
+            <div class="contact-channels">
+              <!-- Email Card -->
+              <div class="channel-card">
+                <div class="channel-card-left">
+                  <span class="channel-label">DIRECT EMAIL</span>
+                  <a href="mailto:fasubatimi@gmail.com" class="channel-val">fasubatimi@gmail.com</a>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <button type="button" class="channel-action-btn" data-copy-email aria-label="Copy email address to clipboard">
+                    Copy Email
+                  </button>
+                  <a href="mailto:fasubatimi@gmail.com" class="channel-action-btn">
+                    Launch ↗
+                  </a>
+                </div>
+              </div>
+
+              <!-- GitHub Card -->
+              <div class="channel-card">
+                <div class="channel-card-left">
+                  <span class="channel-label">GITHUB REPOSITORIES</span>
+                  <a href="https://github.com/fasubatimi" target="_blank" rel="noopener noreferrer" class="channel-val">github.com/fasubatimi</a>
+                </div>
+                <a href="https://github.com/fasubatimi" target="_blank" rel="noopener noreferrer" class="channel-action-btn">
+                  Open GitHub ↗
+                </a>
+              </div>
+
+              <!-- Location Card -->
+              <div class="channel-card">
+                <div class="channel-card-left">
+                  <span class="channel-label">LOCATION &amp; TIMEZONE</span>
+                  <span class="channel-val">Lagos, Nigeria</span>
+                </div>
+                <span class="editorial-badge">WAT (UTC+1)</span>
+              </div>
+            </div>
+
+            <!-- Availability Note -->
+            <div style="margin-top: 24px; padding: 20px; background-color: var(--color-paper-light); border: 1px solid var(--color-line-dark);">
+              <h3 style="font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 700; color: var(--color-ink); margin-bottom: 6px;">
+                Looking for a CV or references?
+              </h3>
+              <p style="font-size: 0.875rem; color: var(--color-secondary); line-height: 1.5;">
+                I am happy to provide a CV, code walkthroughs, or references on request.
+              </p>
+            </div>
+          </div>
+
+          <!-- Direct Message Composer (mailto generator) -->
+          <div class="contact-composer-card reveal-on-scroll">
+            <div class="composer-header">
+              <h3>Send a Direct Note</h3>
+              <p>Fills your message directly into your email client, ready to send.</p>
+            </div>
+
+            <form class="composer-form" id="contact-composer-form">
+              <div class="form-group">
+                <label for="composer-name">Your Name</label>
+                <input type="text" id="composer-name" class="form-input" placeholder="e.g. Sarah Jenkins" autocomplete="name">
+              </div>
+
+              <div class="form-group">
+                <label for="composer-email">Your Email Address</label>
+                <input type="email" id="composer-email" class="form-input" placeholder="e.g. sarah@company.com" autocomplete="email">
+              </div>
+
+              <div class="form-group">
+                <label for="composer-subject">Subject</label>
+                <input type="text" id="composer-subject" class="form-input" placeholder="e.g. Software Role / Project Collaboration" value="Software Role / Collaboration Inquiry">
+              </div>
+
+              <div class="form-group">
+                <label for="composer-message">Message</label>
+                <textarea id="composer-message" class="form-textarea" placeholder="Write your message here..." required></textarea>
+              </div>
+
+              <div class="composer-submit-row">
+                <button type="submit" class="btn-primary">
+                  Launch Email Client <span>↗</span>
+                </button>
+                <span class="composer-note" id="composer-feedback">
+                  Opens directly in your mail app.
+                </span>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         04. Return Navigation
+         ======================================================================== -->
+    <section class="home-section-teaser" aria-label="Return Navigation">
+      <div class="container">
+        <div class="teaser-grid reveal-on-scroll">
+          <div>
+            <span class="meta-eyebrow"><span class="dot-indicator"></span> PORTFOLIO HOME</span>
+            <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: 6px;">Return to the homepage.</h2>
+            <p style="max-width: 580px; margin-top: 10px;">
+              Explore the interactive 3D phone presentation and selected work archive.
+            </p>
+          </div>
+          <a href="index.html" class="btn-secondary">
+            ← Back to Home
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       05. Site Footer & Colophon
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>FASUBA / OLUKUNLE</h3>
+          <p>
+            Software developer building practical, reliable software in Lagos, Nigeria.
+          </p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer Navigation">
+          <h4>Pages</h4>
+          <a href="index.html">Home</a>
+          <a href="work.html">Selected Work</a>
+          <a href="case-studies.html">Case Studies</a>
+          <a href="about.html">About Kunle</a>
+          <a href="skills.html">Skills &amp; Toolkit</a>
+          <a href="contact.html">Contact &amp; Inquiries</a>
+        </nav>
+
+        <nav class="footer-nav" aria-label="External Profiles">
+          <h4>Profiles</h4>
+          <a href="https://github.com/fasubatimi" target="_blank" rel="noopener noreferrer">GitHub (fasubatimi) ↗</a>
+          <a href="mailto:fasubatimi@gmail.com">fasubatimi@gmail.com ↗</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Fasuba Olukunle. All rights reserved.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Main Interactive JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>

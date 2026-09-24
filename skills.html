@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F0EEE8">
+
+  <!-- No-flash theme init: set data-theme before first paint -->
+  <script>
+    (function () {
+      try {
+        var s = localStorage.getItem('theme');
+        var d = s ? s === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (d) document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
+  
+  <!-- Primary Meta Tags -->
+  <title>Technical Toolkit &amp; Skills — Fasuba Olukunle</title>
+  <meta name="title" content="Technical Toolkit &amp; Skills — Fasuba Olukunle">
+  <meta name="description" content="Technical capabilities, languages, libraries, and developer tools used by software developer Fasuba Olukunle with project-backed evidence.">
+  <meta name="author" content="Fasuba Olukunle">
+
+  <!-- Canonical & Social (Open Graph / Twitter) -->
+  <link rel="canonical" href="https://fasubatimi.github.io/portfolio/skills.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fasuba Olukunle — Portfolio">
+  <meta property="og:url" content="https://fasubatimi.github.io/portfolio/skills.html">
+  <meta property="og:title" content="Technical Toolkit &amp; Skills — Fasuba Olukunle">
+  <meta property="og:description" content="Technical capabilities, languages, libraries, and developer tools used by software developer Fasuba Olukunle with project-backed evidence.">
+  <meta property="og:image" content="https://fasubatimi.github.io/portfolio/assets/og/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Fasuba Olukunle — Software Developer, Lagos, Nigeria">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Technical Toolkit &amp; Skills — Fasuba Olukunle">
+  <meta name="twitter:description" content="Technical capabilities, languages, libraries, and developer tools used by software developer Fasuba Olukunle with project-backed evidence.">
+  <meta name="twitter:image" content="https://fasubatimi.github.io/portfolio/assets/og/og-cover.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Editorial Design System (ZERO GRADIENTS) -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Progressive-enhancement safeguard: show reveal content if JS is disabled -->
+  <noscript>
+    <style>
+      .reveal-on-scroll { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+  
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23203238'/><text x='16' y='21' font-family='serif' font-size='15' font-weight='bold' fill='%23F0EEE8' text-anchor='middle'>FO</text></svg>">
+</head>
+<body>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ========================================================================
+       01. Site Header & Multi-Page Navigation
+       ======================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a href="index.html" class="header-brand" aria-label="Fasuba Olukunle — Home">
+        FASUBA <span>/</span> OLUKUNLE
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="header-nav" aria-label="Main Portfolio Navigation">
+        <a href="work.html" class="nav-link">Selected Work</a>
+        <a href="case-studies.html" class="nav-link">Case Studies</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="skills.html" class="nav-link active" aria-current="page">Skills</a>
+        <a href="contact.html" class="nav-cta">Get in Touch</a>
+      </nav>
+
+      <!-- Mobile Nav Toggle -->
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark theme" title="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+      </button>
+
+      <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+    <nav class="mobile-nav-links">
+      <a href="index.html">Home</a>
+      <a href="work.html">Selected Work</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="about.html">About Kunle</a>
+      <a href="skills.html" class="active">Skills &amp; Tools</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="mobile-drawer-footer">
+      <span class="meta-eyebrow"><span class="dot-indicator"></span> FASUBA OLUKUNLE · LAGOS, NIGERIA</span>
+      <a href="mailto:fasubatimi@gmail.com" class="btn-text-link">fasubatimi@gmail.com ↗</a>
+    </div>
+  </div>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content">
+
+    <!-- ========================================================================
+         02. Page Header Banner
+         ======================================================================== -->
+    <section class="page-header-banner" aria-label="Technical Toolkit Banner">
+      <div class="container">
+        <div class="page-banner-grid">
+          <div class="page-banner-top">
+            <span class="meta-eyebrow"><span class="dot-indicator"></span> 04 / TECHNICAL CAPABILITIES</span>
+            <span class="editorial-badge">TECHNICAL TOOLKIT</span>
+          </div>
+          <h1 class="page-banner-title">Technical Toolkit &amp; Skills</h1>
+          <p class="page-banner-lead">
+            Tools, languages, and systems backed by real project implementation—no arbitrary proficiency percentages or skill meters.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         03. Skills Grid Section
+         ======================================================================== -->
+    <section class="skills-section" aria-label="Skills by Domain">
+      <div class="container">
+
+        <h2 class="sr-only">Skills by Domain</h2>
+
+        <div class="skills-grid" data-stagger="0.1">
+          
+          <!-- Category 1: Mobile Development -->
+          <div class="skill-category-card reveal-on-scroll">
+            <div class="skill-category-header">
+              <span class="skill-cat-num">01 / PLATFORM</span>
+              <h3>Mobile Development</h3>
+            </div>
+            <div class="skill-items-list">
+              <div class="skill-item">
+                <span>Java 17 (Android)</span>
+                <span>Core Language</span>
+              </div>
+              <div class="skill-item">
+                <span>Android SDK &amp; Lifecycle</span>
+                <span>Architecture</span>
+              </div>
+              <div class="skill-item">
+                <span>OSMDroid &amp; Geolocation</span>
+                <span>Mapping</span>
+              </div>
+              <div class="skill-item">
+                <span>XML Layouts &amp; Material UI</span>
+                <span>Interface</span>
+              </div>
+              <div class="skill-item">
+                <span>Location Services API</span>
+                <span>GPS &amp; Sensors</span>
+              </div>
+            </div>
+            <div class="skill-evidence-footer">
+              Applied in: <strong>SafeAlert (Android Emergency App)</strong>
+            </div>
+          </div>
+
+          <!-- Category 2: Backend & Cloud -->
+          <div class="skill-category-card reveal-on-scroll">
+            <div class="skill-category-header">
+              <span class="skill-cat-num">02 / SERVICES</span>
+              <h3>Cloud &amp; Backend</h3>
+            </div>
+            <div class="skill-items-list">
+              <div class="skill-item">
+                <span>Firebase Authentication</span>
+                <span>Identity &amp; OAuth</span>
+              </div>
+              <div class="skill-item">
+                <span>Firebase Realtime Database</span>
+                <span>Live Sync</span>
+              </div>
+              <div class="skill-item">
+                <span>Firebase Cloud Storage</span>
+                <span>Asset Storage</span>
+              </div>
+              <div class="skill-item">
+                <span>RESTful APIs &amp; JSON</span>
+                <span>Integration</span>
+              </div>
+              <div class="skill-item">
+                <span>Google Sign-In API</span>
+                <span>Verification</span>
+              </div>
+            </div>
+            <div class="skill-evidence-footer">
+              Applied in: <strong>SafeAlert Backend Architecture</strong>
+            </div>
+          </div>
+
+          <!-- Category 3: Systems & Architecture -->
+          <div class="skill-category-card reveal-on-scroll">
+            <div class="skill-category-header">
+              <span class="skill-cat-num">03 / SYSTEMS</span>
+              <h3>Systems &amp; Prototyping</h3>
+            </div>
+            <div class="skill-items-list">
+              <div class="skill-item">
+                <span>System Design &amp; Topology</span>
+                <span>Architecture</span>
+              </div>
+              <div class="skill-item">
+                <span>LAN IPC &amp; Sockets</span>
+                <span>Protocols</span>
+              </div>
+              <div class="skill-item">
+                <span>C# &amp; Python Scripting</span>
+                <span>Daemons</span>
+              </div>
+              <div class="skill-item">
+                <span>HTML5 / Vanilla CSS / JS</span>
+                <span>Web Consoles</span>
+              </div>
+              <div class="skill-item">
+                <span>Windows Workstation APIs</span>
+                <span>System Locking</span>
+              </div>
+            </div>
+            <div class="skill-evidence-footer">
+              Applied in: <strong>Library Control Specification</strong>
+            </div>
+          </div>
+
+          <!-- Category 4: CS Core & Workflow -->
+          <div class="skill-category-card reveal-on-scroll">
+            <div class="skill-category-header">
+              <span class="skill-cat-num">04 / PRACTICE</span>
+              <h3>CS Core &amp; Workflow</h3>
+            </div>
+            <div class="skill-items-list">
+              <div class="skill-item">
+                <span>Data Structures &amp; OOP</span>
+                <span>CS Foundations</span>
+              </div>
+              <div class="skill-item">
+                <span>Git &amp; GitHub Version Control</span>
+                <span>Collaboration</span>
+              </div>
+              <div class="skill-item">
+                <span>Windows &amp; Linux CLI</span>
+                <span>Environment</span>
+              </div>
+              <div class="skill-item">
+                <span>Requirements &amp; Testing</span>
+                <span>Methodology</span>
+              </div>
+              <div class="skill-item">
+                <span>Clean Code &amp; Documentation</span>
+                <span>Maintainability</span>
+              </div>
+            </div>
+            <div class="skill-evidence-footer">
+              Applied in: <strong>Dansamdolly (Inventory System)</strong>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Technical Philosophy Deep-Dive -->
+        <div class="reveal-on-scroll" style="margin-top: clamp(48px, 6vw, 72px); padding: clamp(24px, 4vw, 36px); background-color: var(--color-paper); border: 1px solid var(--color-line-dark); box-shadow: 6px 6px 0 var(--color-line);">
+          <h3 style="font-size: 1.6rem; color: var(--color-ink); margin-bottom: 12px;">How I Evaluate &amp; Choose Tools</h3>
+          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-secondary);">
+            I do not adopt frameworks for the sake of novelty. Every tool in my stack is chosen to satisfy concrete engineering requirements:
+          </p>
+          <ul class="case-list" style="margin-top: 14px;">
+            <li>
+              <strong>Offline Resilience:</strong> In environments with variable connectivity, client software must handle dropped packets gracefully. This is why SafeAlert pairs Firebase Realtime Database with OSMDroid’s local tile caching.
+            </li>
+            <li>
+              <strong>Lightweight Footprint:</strong> For system tools like Library Control, minimal memory and CPU usage on client workstations are non-negotiable requirements to protect user workstations.
+            </li>
+            <li>
+              <strong>Maintainability:</strong> I write code prioritizing explicit types, transparent interfaces, and comprehensive docstrings so that any teammate can jump into the project with minimal onboarding friction.
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         04. Next Navigation Teaser
+         ======================================================================== -->
+    <section class="home-section-teaser" aria-label="Next Step Navigation">
+      <div class="container">
+        <div class="teaser-grid reveal-on-scroll">
+          <div>
+            <span class="meta-eyebrow"><span class="dot-indicator"></span> NEXT SECTION</span>
+            <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: 6px;">Ready to discuss an opportunity?</h2>
+            <p style="max-width: 580px; margin-top: 10px;">
+              Get in touch directly via email or send a message through the direct composer.
+            </p>
+          </div>
+          <a href="contact.html" class="btn-primary">
+            Contact Kunle →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       05. Site Footer & Colophon
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>FASUBA / OLUKUNLE</h3>
+          <p>
+            Software developer building practical, reliable software in Lagos, Nigeria.
+          </p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer Navigation">
+          <h4>Pages</h4>
+          <a href="index.html">Home</a>
+          <a href="work.html">Selected Work</a>
+          <a href="case-studies.html">Case Studies</a>
+          <a href="about.html">About Kunle</a>
+          <a href="skills.html">Skills &amp; Toolkit</a>
+          <a href="contact.html">Contact &amp; Inquiries</a>
+        </nav>
+
+        <nav class="footer-nav" aria-label="External Profiles">
+          <h4>Profiles</h4>
+          <a href="https://github.com/fasubatimi" target="_blank" rel="noopener noreferrer">GitHub (fasubatimi) ↗</a>
+          <a href="mailto:fasubatimi@gmail.com">fasubatimi@gmail.com ↗</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Fasuba Olukunle. All rights reserved.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Main Interactive JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>

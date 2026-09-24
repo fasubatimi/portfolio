@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F0EEE8">
+
+  <!-- No-flash theme init: set data-theme before first paint -->
+  <script>
+    (function () {
+      try {
+        var s = localStorage.getItem('theme');
+        var d = s ? s === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (d) document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Primary Meta Tags -->
+  <title>Curriculum Vitae — Fasuba Olukunle</title>
+  <meta name="title" content="Curriculum Vitae — Fasuba Olukunle">
+  <meta name="description" content="Printable CV / résumé of Fasuba Olukunle (Kunle), a software developer in Lagos, Nigeria — projects, technical toolkit, and engineering principles.">
+  <meta name="author" content="Fasuba Olukunle">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical & Social (Open Graph / Twitter) -->
+  <link rel="canonical" href="https://fasubatimi.github.io/portfolio/cv.html">
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Fasuba Olukunle — Portfolio">
+  <meta property="og:url" content="https://fasubatimi.github.io/portfolio/cv.html">
+  <meta property="og:title" content="Curriculum Vitae — Fasuba Olukunle">
+  <meta property="og:description" content="Printable CV / résumé of Fasuba Olukunle (Kunle), a software developer in Lagos, Nigeria — projects, technical toolkit, and engineering principles.">
+  <meta property="og:image" content="https://fasubatimi.github.io/portfolio/assets/og/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Fasuba Olukunle — Software Developer, Lagos, Nigeria">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Curriculum Vitae — Fasuba Olukunle">
+  <meta name="twitter:description" content="Printable CV / résumé of Fasuba Olukunle (Kunle), a software developer in Lagos, Nigeria — projects, technical toolkit, and engineering principles.">
+  <meta name="twitter:image" content="https://fasubatimi.github.io/portfolio/assets/og/og-cover.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Editorial Design System (ZERO GRADIENTS) -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23203238'/><text x='16' y='21' font-family='serif' font-size='15' font-weight='bold' fill='%23F0EEE8' text-anchor='middle'>FO</text></svg>">
+
+  <!-- Scoped CV layout + print styles (this single special page only) -->
+  <style>
+    /* ===== CV document shell ===== */
+    .cv-shell { padding: clamp(28px, 5vw, 64px) 0 clamp(48px, 6vw, 80px); }
+    .cv-actions {
+      display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+      justify-content: space-between; margin-bottom: 22px;
+    }
+    .cv-actions .meta-eyebrow { margin: 0; }
+    .cv-action-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .cv-doc {
+      background-color: var(--color-paper-light);
+      border: 1px solid var(--color-line-dark);
+      box-shadow: var(--shadow-flat-md);
+      padding: clamp(24px, 4vw, 52px);
+    }
+
+    /* ===== Masthead ===== */
+    .cv-masthead {
+      display: flex; flex-wrap: wrap; gap: 18px 32px;
+      justify-content: space-between; align-items: flex-start;
+      padding-bottom: 20px; border-bottom: 2px solid var(--color-ink);
+    }
+    .cv-name { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.02; color: var(--color-ink); }
+    .cv-name span { color: var(--color-accent); }
+    .cv-role {
+      font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--color-secondary); margin-top: 8px;
+    }
+    .cv-contact { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.9; text-align: right; }
+    .cv-contact a { color: var(--color-ink); border-bottom: 1px solid var(--color-line-dark); }
+    .cv-contact a:hover { color: var(--color-accent); border-color: var(--color-accent); }
+    .cv-contact b { color: var(--color-secondary); font-weight: 600; }
+
+    /* ===== Section rhythm ===== */
+    .cv-section { margin-top: 30px; }
+    .cv-section-head {
+      display: flex; align-items: baseline; gap: 12px;
+      border-bottom: 1px solid var(--color-line-dark); padding-bottom: 6px; margin-bottom: 14px;
+    }
+    .cv-section-head h2 { font-size: 1.15rem; color: var(--color-ink); letter-spacing: -0.01em; }
+    .cv-section-head .cv-sec-num {
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-accent);
+      letter-spacing: 0.1em;
+    }
+    .cv-lead { font-size: 1.02rem; line-height: 1.7; color: var(--color-ink-soft); max-width: 68ch; }
+
+    /* ===== Principles inline row ===== */
+    .cv-principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .cv-principle { border-left: 3px solid var(--color-accent); padding: 2px 0 2px 12px; }
+    .cv-principle b { display: block; color: var(--color-ink); font-size: 0.95rem; }
+    .cv-principle span { font-size: 0.85rem; color: var(--color-secondary); line-height: 1.5; }
+
+    /* ===== Experience / project entries ===== */
+    .cv-entry { padding: 14px 0; border-bottom: 1px dotted var(--color-line-dark); }
+    .cv-entry:last-child { border-bottom: 0; }
+    .cv-entry-top {
+      display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: space-between; align-items: baseline;
+    }
+    .cv-entry-title { font-family: var(--font-sans); font-weight: 700; font-size: 1.05rem; color: var(--color-ink); }
+    .cv-entry-role { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-secondary); letter-spacing: 0.04em; text-transform: uppercase; }
+    .cv-entry-desc { margin-top: 5px; font-size: 0.94rem; line-height: 1.6; color: var(--color-ink-soft); max-width: 78ch; }
+    .cv-entry-stack { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .cv-chip {
+      font-family: var(--font-mono); font-size: 0.68rem; padding: 3px 8px;
+      background-color: var(--color-panel); border: 1px solid var(--color-line-dark); color: var(--color-ink);
+    }
+
+    /* ===== Skills matrix ===== */
+    .cv-skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 32px; }
+    .cv-skill-group h3 { font-size: 0.82rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-accent); margin-bottom: 6px; }
+    .cv-skill-group p { font-size: 0.9rem; line-height: 1.65; color: var(--color-ink-soft); }
+
+    /* ===== Facts row ===== */
+    .cv-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px 24px; }
+    .cv-fact b { display: block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-secondary); }
+    .cv-fact span { font-size: 0.95rem; color: var(--color-ink); }
+
+    @media (max-width: 720px) {
+      .cv-principles, .cv-skills, .cv-facts { grid-template-columns: 1fr; }
+      .cv-contact { text-align: left; }
+    }
+
+    /* ===== Print / Save-as-PDF ===== */
+    @media print {
+      @page { margin: 1.4cm; }
+      html, body { background: #fff !important; }
+      .site-header, .mobile-drawer, .site-footer, .cv-actions, .skip-link { display: none !important; }
+      .cv-shell { padding: 0 !important; }
+      .container { max-width: none !important; padding: 0 !important; }
+      .cv-doc { border: 0 !important; box-shadow: none !important; padding: 0 !important; background: #fff !important; }
+      .cv-name, .cv-entry-title, .cv-section-head h2, .cv-fact span, .cv-principle b, .cv-contact a { color: #000 !important; }
+      .cv-chip { background: #fff !important; border-color: #999 !important; }
+      .cv-entry, .cv-section, .cv-principle { break-inside: avoid; page-break-inside: avoid; }
+      a { text-decoration: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Site Header -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a href="index.html" class="header-brand" aria-label="Fasuba Olukunle — Home">
+        FASUBA <span>/</span> OLUKUNLE
+      </a>
+      <nav class="header-nav" aria-label="Main Portfolio Navigation">
+        <a href="work.html" class="nav-link">Selected Work</a>
+        <a href="case-studies.html" class="nav-link">Case Studies</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="skills.html" class="nav-link">Skills</a>
+        <a href="contact.html" class="nav-cta">Get in Touch</a>
+      </nav>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark theme" title="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+      </button>
+
+      <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+    <nav class="mobile-nav-links">
+      <a href="index.html">Home</a>
+      <a href="work.html">Selected Work</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="about.html">About Kunle</a>
+      <a href="skills.html">Skills &amp; Tools</a>
+      <a href="cv.html" class="active">CV / Résumé</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="mobile-drawer-footer">
+      <span class="meta-eyebrow"><span class="dot-indicator"></span> FASUBA OLUKUNLE · LAGOS, NIGERIA</span>
+      <a href="mailto:fasubatimi@gmail.com" class="btn-text-link">fasubatimi@gmail.com ↗</a>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <section class="cv-shell" aria-label="Curriculum Vitae">
+      <div class="container">
+
+        <!-- Screen-only action bar (hidden when printing) -->
+        <div class="cv-actions">
+          <span class="meta-eyebrow"><span class="dot-indicator"></span> CURRICULUM VITAE · ONE PAGE</span>
+          <div class="cv-action-buttons">
+            <button type="button" class="btn-primary" onclick="window.print()">Print / Save as PDF ↧</button>
+            <a href="contact.html" class="btn-secondary">Get in Touch ↗</a>
+          </div>
+        </div>
+
+        <article class="cv-doc">
+          <!-- MASTHEAD -->
+          <header class="cv-masthead">
+            <div>
+              <h1 class="cv-name">Fasuba <span>Olukunle</span></h1>
+              <p class="cv-role">Software Developer · Android · Systems · Clean UI</p>
+            </div>
+            <div class="cv-contact">
+              <div><b>LOC</b> Lagos, Nigeria (WAT / UTC+1)</div>
+              <div><b>MAIL</b> <a href="mailto:fasubatimi@gmail.com">fasubatimi@gmail.com</a></div>
+              <div><b>GIT</b> <a href="https://github.com/fasubatimi" target="_blank" rel="noopener noreferrer">github.com/fasubatimi</a></div>
+              <div><b>WEB</b> <a href="index.html">Portfolio ↗</a></div>
+            </div>
+          </header>
+
+          <!-- PROFILE -->
+          <section class="cv-section">
+            <div class="cv-section-head">
+              <span class="cv-sec-num">01</span>
+              <h2>Profile</h2>
+            </div>
+            <p class="cv-lead">
+              Software developer based in Lagos, Nigeria. I build practical, dependable software around real
+              problems — native Android applications, small systems, and clear interfaces — favouring careful
+              implementation over unnecessary complexity. Core work spans Java 17 / Android, Firebase cloud
+              services, OSMDroid mapping, and full-stack web builds.
+            </p>
+          </section>
+
+          <!-- ENGINEERING PRINCIPLES -->
+          <section class="cv-section">
+            <div class="cv-section-head">
+              <span class="cv-sec-num">02</span>
+              <h2>Engineering Principles</h2>
+            </div>
+            <div class="cv-principles">
+              <div class="cv-principle">
+                <b>Clarity over cleverness</b>
+                <span>Readable, explicit code and interfaces a teammate can pick up quickly.</span>
+              </div>
+              <div class="cv-principle">
+                <b>Dependability under stress</b>
+                <span>Graceful handling of dropped connectivity, edge cases, and real-world conditions.</span>
+              </div>
+              <div class="cv-principle">
+                <b>Ownership end to end</b>
+                <span>From requirements and architecture through implementation and documentation.</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- SELECTED PROJECTS -->
+          <section class="cv-section">
+            <div class="cv-section-head">
+              <span class="cv-sec-num">03</span>
+              <h2>Selected Projects</h2>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-entry-top">
+                <span class="cv-entry-title">SafeAlert — Android Emergency Reporting App</span>
+                <span class="cv-entry-role">Mobile Developer &amp; Architect</span>
+              </div>
+              <p class="cv-entry-desc">
+                Native Android application for emergency incident reporting, live nearby-hazard discovery within
+                a verified alert radius, and community safety communication, with open-source map integration.
+              </p>
+              <div class="cv-entry-stack">
+                <span class="cv-chip">Java 17</span>
+                <span class="cv-chip">Android SDK</span>
+                <span class="cv-chip">Firebase Auth</span>
+                <span class="cv-chip">Realtime DB</span>
+                <span class="cv-chip">Cloud Storage</span>
+                <span class="cv-chip">OSMDroid</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-entry-top">
+                <span class="cv-entry-title">Library Control — Workstation Management Web Admin</span>
+                <span class="cv-entry-role">Full-Stack Developer</span>
+              </div>
+              <p class="cv-entry-desc">
+                Web console that lets university research librarians monitor terminal status and manage
+                shared-computer sessions, backed by a coordinator API with JWT auth and audit logging.
+              </p>
+              <div class="cv-entry-stack">
+                <span class="cv-chip">React 19</span>
+                <span class="cv-chip">TypeScript</span>
+                <span class="cv-chip">Vite</span>
+                <span class="cv-chip">FastAPI (Python)</span>
+                <span class="cv-chip">SQLite</span>
+                <span class="cv-chip">JWT</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-entry-top">
+                <span class="cv-entry-title">Dansamdolly — Inventory &amp; Stock Management ERP</span>
+                <span class="cv-entry-role">Developer &amp; Team Contributor</span>
+              </div>
+              <p class="cv-entry-desc">
+                Spring Boot web application covering products, sales, invoicing, customers, suppliers,
+                warehouses, and reporting — built with a modular architecture and secured access.
+              </p>
+              <div class="cv-entry-stack">
+                <span class="cv-chip">Java 17</span>
+                <span class="cv-chip">Spring Boot</span>
+                <span class="cv-chip">Thymeleaf</span>
+                <span class="cv-chip">Spring Security</span>
+                <span class="cv-chip">JPA / Hibernate</span>
+                <span class="cv-chip">MySQL</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- TECHNICAL TOOLKIT -->
+          <section class="cv-section">
+            <div class="cv-section-head">
+              <span class="cv-sec-num">04</span>
+              <h2>Technical Toolkit</h2>
+            </div>
+            <div class="cv-skills">
+              <div class="cv-skill-group">
+                <h3>Mobile Development</h3>
+                <p>Java 17 (Android), Android SDK &amp; lifecycle, OSMDroid &amp; geolocation, XML layouts &amp; Material UI, Location Services API.</p>
+              </div>
+              <div class="cv-skill-group">
+                <h3>Cloud &amp; Backend</h3>
+                <p>Firebase Authentication, Realtime Database, Cloud Storage, RESTful APIs &amp; JSON, FastAPI (Python), Google Sign-In.</p>
+              </div>
+              <div class="cv-skill-group">
+                <h3>Systems &amp; Web</h3>
+                <p>System design &amp; topology, client–server APIs, React 19 / TypeScript, HTML5 / CSS / JS, Python &amp; C# scripting.</p>
+              </div>
+              <div class="cv-skill-group">
+                <h3>CS Core &amp; Workflow</h3>
+                <p>Data structures &amp; OOP, Git &amp; GitHub, Windows &amp; Linux CLI, requirements &amp; testing, clean code &amp; documentation.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- EDUCATION & AVAILABILITY -->
+          <section class="cv-section">
+            <div class="cv-section-head">
+              <span class="cv-sec-num">05</span>
+              <h2>Education &amp; Availability</h2>
+            </div>
+            <div class="cv-facts">
+              <div class="cv-fact">
+                <b>Field of Study</b>
+                <span>Computer Science</span>
+              </div>
+              <div class="cv-fact">
+                <b>Availability</b>
+                <span>Open to software engineering roles</span>
+              </div>
+              <div class="cv-fact">
+                <b>Primary Focus</b>
+                <span>Android · Systems · Clean UI</span>
+              </div>
+            </div>
+          </section>
+
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>FASUBA / OLUKUNLE</h3>
+          <p>Software developer building practical, reliable software in Lagos, Nigeria.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer Navigation">
+          <h4>Pages</h4>
+          <a href="index.html">Home</a>
+          <a href="work.html">Selected Work</a>
+          <a href="case-studies.html">Case Studies</a>
+          <a href="about.html">About Kunle</a>
+          <a href="skills.html">Skills &amp; Toolkit</a>
+          <a href="cv.html">CV / Résumé</a>
+          <a href="contact.html">Contact &amp; Inquiries</a>
+        </nav>
+        <nav class="footer-nav" aria-label="External Profiles">
+          <h4>Profiles</h4>
+          <a href="https://github.com/fasubatimi" target="_blank" rel="noopener noreferrer">GitHub (fasubatimi) ↗</a>
+          <a href="mailto:fasubatimi@gmail.com">fasubatimi@gmail.com ↗</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 Fasuba Olukunle. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+
