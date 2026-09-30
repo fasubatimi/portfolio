@@ -612,8 +612,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // 08. Page-to-Page Transition (Editorial Fade-Out on Internal Nav)
   // --------------------------------------------------------------------------
   const rootEl = document.documentElement;
-  const LEAVE_DURATION = 320; // must match CSS pageLeave timing
+  const LEAVE_DURATION = 520; // must clear the curtain wipe (CSS .page-curtain 0.52s)
   let isNavigating = false;
+
+  // Persistent solid-panel "curtain" that sweeps up to cover before an internal
+  // navigation, so moving between pages reads like a filmic scene cut. Injected
+  // on every page; only ever animated when motion is allowed (see click handler).
+  const pageCurtain = document.createElement('div');
+  pageCurtain.className = 'page-curtain';
+  pageCurtain.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(pageCurtain);
 
   function isInternalPageLink(anchor) {
     // Must be same-origin
@@ -646,6 +654,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const destination = anchor.href;
       rootEl.classList.add('is-leaving');
+      pageCurtain.classList.add('is-covering');
 
       window.setTimeout(() => {
         window.location.href = destination;
@@ -766,9 +775,152 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --------------------------------------------------------------------------
+  // 11. Cinematic Layer — scroll progress, staged intro, magnetic CTAs
+  // --------------------------------------------------------------------------
+
+  // 11a. Global scroll-progress bar (top of viewport; tracks whole-page scroll)
+  (function scrollProgress() {
+    const bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    const fill = document.createElement('div');
+    fill.className = 'scroll-progress__bar';
+    bar.appendChild(fill);
+    document.body.appendChild(bar);
+
+    let ticking = false;
+    function update() {
+      const doc = document.documentElement;
+      const scrollable = doc.scrollHeight - doc.clientHeight;
+      const pct = scrollable > 0 ? (window.scrollY || doc.scrollTop) / scrollable : 0;
+      fill.style.width = (Math.max(0, Math.min(1, pct)) * 100).toFixed(2) + '%';
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  })();
+
+  // 11b. Staged intro reveal — index each child so the CSS cascade delays cleanly
+  document.querySelectorAll('[data-cinematic-intro]').forEach((intro) => {
+    Array.prototype.forEach.call(intro.children, (child, i) => {
+      child.style.setProperty('--intro-i', String(i));
+    });
+  });
+
+  // 11c. Magnetic primary CTAs (fine pointer + motion allowed; touch-safe)
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
+  if (finePointer && !prefersReducedMotion) {
+    const STRENGTH = 0.28;  // subtle, editorial pull
+    const MAX_OFFSET = 7;   // px cap
+    document.querySelectorAll('.btn-primary').forEach((btn) => {
+      btn.addEventListener('pointermove', (e) => {
+        if (e.pointerType === 'touch') return;
+        const rect = btn.getBoundingClientRect();
+        const dx = (e.clientX - (rect.left + rect.width / 2)) * STRENGTH;
+        const dy = (e.clientY - (rect.top + rect.height / 2)) * STRENGTH;
+        const cx = Math.max(-MAX_OFFSET, Math.min(MAX_OFFSET, dx));
+        const cy = Math.max(-MAX_OFFSET, Math.min(MAX_OFFSET, dy));
+        btn.style.transform = 'translate(' + cx.toFixed(1) + 'px, ' + cy.toFixed(1) + 'px)';
+      });
+      btn.addEventListener('pointerleave', () => {
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 12. Cinematic Scenes — opening title sequence + scroll parallax depth
+  // --------------------------------------------------------------------------
+
+  // 12a. Opening title sequence (homepage only · once per session · motion-on)
+  (function titleSequence() {
+    if (prefersReducedMotion) return;
+    if (!document.body.hasAttribute('data-home-intro')) return;
+    try { if (sessionStorage.getItem('kunle:intro') === '1') return; } catch (_) {}
+    try { sessionStorage.setItem('kunle:intro', '1'); } catch (_) {}
+
+    const seq = document.createElement('div');
+    seq.className = 'title-seq';
+    seq.setAttribute('aria-hidden', 'true');
+    seq.innerHTML = [
+      '<div class="title-seq__inner">',
+      '<span class="title-seq__chapter">Portfolio — 2026</span>',
+      '<span class="title-seq__name">Fasuba <span>/</span> Olukunle</span>',
+      '<span class="title-seq__role">Software Developer · Lagos, Nigeria</span>',
+      '<span class="title-seq__rule"></span>',
+      '</div>',
+      '<span class="title-seq__skip">Click or press any key to skip</span>'
+    ].join('');
+    document.body.appendChild(seq);
+    rootEl.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+
+    let dismissed = false;
+    function dismiss() {
+      if (dismissed) return;
+      dismissed = true;
+      window.clearTimeout(autoTimer);
+      seq.classList.add('is-leaving');
+      rootEl.style.overflow = '';
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', dismiss, true);
+      window.removeEventListener('wheel', dismiss, { passive: true });
+      window.removeEventListener('touchstart', dismiss, { passive: true });
+      seq.addEventListener('transitionend', () => { if (seq.parentNode) seq.remove(); }, { once: true });
+      window.setTimeout(() => { if (seq.parentNode) seq.remove(); }, 1100);
+    }
+    const autoTimer = window.setTimeout(dismiss, 2500);
+    seq.addEventListener('click', dismiss);
+    window.addEventListener('keydown', dismiss, true);
+    window.addEventListener('wheel', dismiss, { passive: true });
+    window.addEventListener('touchstart', dismiss, { passive: true });
+  })();
+  // 12b. Scroll parallax depth — cinematic drift on the hero stage + work thumbs
+  (function scrollParallax() {
+    if (prefersReducedMotion) return;
+    const items = [];
+    const stage = document.querySelector('.hero-stage-wrapper');
+    if (stage && window.matchMedia('(min-width: 881px)').matches) {
+      stage.setAttribute('data-parallax', '');
+      items.push({ el: stage, factor: 0.05, cap: 34, scale: 1 });
+    }
+    document.querySelectorAll('.work-card-thumb img').forEach((img) => {
+      img.setAttribute('data-parallax', '');
+      items.push({ el: img, factor: 0.06, cap: 12, scale: 1.12 });
+    });
+    if (!items.length) return;
+
+    let ticking = false;
+    function update() {
+      const h = window.innerHeight || rootEl.clientHeight;
+      for (let i = 0; i < items.length; i++) {
+        const it = items[i];
+        const r = it.el.getBoundingClientRect();
+        if (r.bottom < -140 || r.top > h + 140) continue;   // skip well-offscreen
+        const center = r.top + r.height / 2;
+        let ty = (h / 2 - center) * it.factor;
+        if (ty > it.cap) ty = it.cap; else if (ty < -it.cap) ty = -it.cap;
+        it.el.style.transform =
+          'translate3d(0,' + ty.toFixed(1) + 'px,0)' +
+          (it.scale !== 1 ? ' scale(' + it.scale + ')' : '');
+      }
+      ticking = false;
+    }
+    function onScroll() {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
+  })();
   // Reset leave-state when navigating back via bfcache (avoids blank/faded page)
   window.addEventListener('pageshow', () => {
     isNavigating = false;
     rootEl.classList.remove('is-leaving');
+    pageCurtain.classList.remove('is-covering');
   });
 });

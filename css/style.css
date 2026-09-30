@@ -3355,3 +3355,204 @@ a.channel-val:hover {
 .error-links { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--color-line-dark); display: flex; flex-wrap: wrap; gap: 8px 24px; }
 .error-links a { font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-secondary); border-bottom: 1px solid var(--color-line-dark); }
 .error-links a:hover { color: var(--color-accent); border-color: var(--color-accent); }
+
+/* ==========================================================================
+   19. CINEMATIC LAYER (gradient-free · token-driven · reduced-motion-safe)
+   Scroll-progress bar · staged intro reveal · kinetic marquee · magnetic CTA
+   ========================================================================== */
+
+/* --- 19a. Global scroll-progress bar (injected into <body> by main.js) --- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 10000;              /* rides above the sticky header */
+  background-color: transparent;
+  pointer-events: none;
+}
+.scroll-progress__bar {
+  height: 100%;
+  width: 0;
+  background-color: var(--color-accent);
+  transition: width 0.08s linear;
+}
+
+/* --- 19b. Staged intro reveal (CSS-only; plays once on load) --- */
+/* Safe default: fully visible if the animation never runs (no-JS / reduced-motion). */
+[data-cinematic-intro] > * { opacity: 1; }
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes introRise {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes introHeadline {
+    from { opacity: 0; transform: translateY(26px); clip-path: inset(0 0 100% 0); }
+    to   { opacity: 1; transform: translateY(0);    clip-path: inset(0 0 0 0); }
+  }
+  [data-cinematic-intro] > * {
+    opacity: 0;
+    animation: introRise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(0.1s + var(--intro-i, 0) * 0.09s);
+    will-change: opacity, transform;
+  }
+  /* Signature clip-mask rise for the lead headline of the intro block */
+  [data-cinematic-intro] .hero-headline,
+  [data-cinematic-intro] [data-intro-headline] {
+    animation-name: introHeadline;
+    animation-duration: 0.95s;
+  }
+}
+/* --- 19c. Kinetic editorial marquee (auto-scroll; pauses on hover) --- */
+.marquee {
+  border-top: 1px solid var(--color-line-dark);
+  border-bottom: 1px solid var(--color-line-dark);
+  background-color: var(--color-paper-light);
+  overflow: hidden;
+  padding: 15px 0;
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 40s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track { animation-play-state: paused; }
+.marquee__group { display: flex; align-items: center; flex-shrink: 0; }
+.marquee__item {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  white-space: nowrap;
+  padding: 0 clamp(18px, 3vw, 38px);
+}
+.marquee__sep { color: var(--color-accent); font-size: 0.62rem; }
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }   /* two identical groups → seamless loop */
+}
+
+/* --- 19d. Magnetic primary CTAs: main.js sets the inline transform; this
+   keeps the spring-back smooth (base .btn-primary already transitions transform). */
+.btn-primary { will-change: transform; }
+
+/* --- 19e. Reduced-motion: freeze the marquee into a centered static wrap --- */
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+  .marquee__group[aria-hidden="true"] { display: none; }
+  .scroll-progress__bar { transition: none; }
+}
+
+/* ==========================================================================
+   20. CINEMATIC SCENES (gradient-free · token-driven · reduced-motion-safe)
+   Opening title sequence · scene-cut page curtain · scroll parallax depth
+   ========================================================================== */
+
+/* --- 20a. Opening title sequence (homepage · first visit · built by main.js) --- */
+.title-seq {
+  position: fixed;
+  inset: 0;
+  z-index: 11000;                          /* above header, progress bar, curtain */
+  background-color: var(--color-paper);    /* solid fill — zero gradients */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform: translateY(0);
+  transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.title-seq.is-leaving { transform: translateY(-100%); }   /* curtain lifts to reveal */
+.title-seq__inner {
+  text-align: center;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.title-seq__chapter {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+.title-seq__name {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 8vw, 5.2rem);
+  font-weight: 400;
+  line-height: 1.02;
+  color: var(--color-ink);
+}
+.title-seq__name span { color: var(--color-accent); }
+.title-seq__role {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+.title-seq__rule {
+  height: 2px;
+  width: 88px;
+  background-color: var(--color-accent);
+  margin-top: 6px;
+}
+.title-seq__skip {
+  position: absolute;
+  bottom: 26px;
+  left: 0;
+  right: 0;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  opacity: 0.7;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes titleRise {
+    from { opacity: 0; transform: translateY(24px); clip-path: inset(0 0 100% 0); }
+    to   { opacity: 1; transform: translateY(0);    clip-path: inset(0 0 0 0); }
+  }
+  @keyframes titleFade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes ruleWipe  { from { width: 0; } to { width: 88px; } }
+  .title-seq__chapter { opacity: 0; animation: titleFade 0.6s ease 0.15s both; }
+  .title-seq__name    { opacity: 0; animation: titleRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both; }
+  .title-seq__role    { opacity: 0; animation: titleFade 0.7s ease 0.75s both; }
+  .title-seq__rule    { animation: ruleWipe 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.95s both; }
+  .title-seq__skip    { opacity: 0; animation: titleFade 0.6s ease 1.5s both; }
+}
+/* --- 20b. Scene-cut page curtain (solid panel wipe on internal navigation) --- */
+.page-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 10600;                          /* above header + progress, below title */
+  background-color: var(--color-paper);    /* solid fill — zero gradients */
+  border-top: 2px solid var(--color-accent);
+  pointer-events: none;
+  transform: translateY(100%);             /* parked below the fold */
+  transition: transform 0.52s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.page-curtain.is-covering { transform: translateY(0); }   /* sweeps up to cover */
+@media (prefers-reduced-motion: reduce) {
+  .page-curtain { transition: none; }      /* main.js also skips covering here */
+}
+
+/* --- 20c. Scroll parallax depth (main.js sets the inline transform per node) --- */
+@media (prefers-reduced-motion: no-preference) {
+  [data-parallax] { will-change: transform; }
+}
