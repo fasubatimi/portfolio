@@ -212,15 +212,29 @@
       </div>
     </section>
 
-    <!-- (Removed the non-functional scroll-controlled 3D showcase; the three projects are now presented once, cleanly, in the Selected Work grid below.) -->
+    <!-- ========================================================================
+         03. Manifesto — scroll-illuminated thesis (pinned scrub scene)
+         ======================================================================== -->
+    <section class="manifesto-section" data-scene="manifesto" aria-label="Philosophy Statement">
+      <div class="manifesto-track">
+        <div class="manifesto-sticky">
+          <p class="manifesto-text" data-illuminate>
+            I build software that solves <em>tangible problems</em> for real people. Clear interfaces that explain themselves. Architectures that hold under pressure. Code a stranger can still read a year from now.
+          </p>
+          <div class="manifesto-foot">
+            <a href="about.html" class="btn-text-link">More about Kunle <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ========================================================================
-         03. Selected Work Highlights Strip
+         04. Selected Work — sticky editorial deck (pins and stacks on scroll)
          ======================================================================== -->
-    <section class="selected-work-section" id="selected-work" aria-label="Selected Projects Highlights">
+    <section class="work-deck-section" id="selected-work" aria-label="Selected Projects Highlights">
       <div class="container">
 
-        <div class="work-header-strip reveal-on-scroll">
+        <div class="work-header-strip">
           <div>
             <div class="meta-eyebrow">
               <span class="dot-indicator"></span> FEATURED ARCHIVE
@@ -230,79 +244,90 @@
           <a href="work.html" class="btn-text-link">View Full Archive (03)</a>
         </div>
 
-        <!-- 3-Column Editorial Grid -->
-        <div class="work-grid" data-stagger="0.12">
-          
-          <!-- Project 01: SafeAlert -->
-          <article class="work-card reveal-on-scroll">
-            <div class="work-card-top">
+        <div class="work-deck" data-scene="deck">
+
+          <!-- Deck Card 01: SafeAlert -->
+          <article class="deck-card" style="--deck-i:0">
+            <div class="deck-card__media">
               <div class="work-card-thumb">
                 <picture><source srcset="assets/safealert/gallery/04-map.webp" type="image/webp"><img width="1080" height="2400" src="assets/safealert/gallery/04-map.png" alt="SafeAlert live map with a 3 km verified-incident alert radius" loading="lazy" decoding="async"></picture>
               </div>
-              <span class="work-card-number">01 / FEATURED</span>
-              <span class="work-card-category">ANDROID · FIREBASE · OSMDROID</span>
-              <h3 class="work-card-title">SafeAlert</h3>
+            </div>
+            <div class="deck-card__body">
+              <div class="deck-card__head">
+                <span class="work-card-number">01 / FEATURED</span>
+                <span class="work-card-category">ANDROID · FIREBASE · OSMDROID</span>
+              </div>
+              <h3 class="deck-card__title">SafeAlert</h3>
               <p class="work-card-desc">
                 An Android application for emergency reporting, real-time nearby incident discovery, and safety communication with open-source map integration.
               </p>
+              <div class="deck-card__foot">
+                <span class="work-card-status">
+                  <span class="status-dot"></span> Functional Android Application
+                </span>
+                <a href="case-studies.html#safealert" class="work-card-action">
+                  Read full case study <span>↘</span>
+                </a>
+              </div>
             </div>
-
-            <div class="work-card-bottom">
-              <span class="work-card-status">
-                <span class="status-dot"></span> Functional Android Application
-              </span>
-              <a href="case-studies.html#safealert" class="work-card-action">
-                Read full case study <span>↘</span>
-              </a>
-            </div>
+            <span class="deck-card__dim" aria-hidden="true"></span>
           </article>
 
-          <!-- Project 02: Library Control -->
-          <article class="work-card reveal-on-scroll">
-            <div class="work-card-top">
+          <!-- Deck Card 02: Library Control -->
+          <article class="deck-card" style="--deck-i:1">
+            <div class="deck-card__media">
               <div class="work-card-thumb">
                 <picture><source srcset="assets/library-control/gallery/02-dashboard.webp" type="image/webp"><img width="2880" height="1960" src="assets/library-control/gallery/02-dashboard.png" alt="Library Control web admin dashboard" loading="lazy" decoding="async"></picture>
               </div>
-              <span class="work-card-number">02 / SYSTEMS</span>
-              <span class="work-card-category">WEB ADMIN · FASTAPI · REACT</span>
-              <h3 class="work-card-title">Library Control</h3>
+            </div>
+            <div class="deck-card__body">
+              <div class="deck-card__head">
+                <span class="work-card-number">02 / SYSTEMS</span>
+                <span class="work-card-category">WEB ADMIN · FASTAPI · REACT</span>
+              </div>
+              <h3 class="deck-card__title">Library Control</h3>
               <p class="work-card-desc">
                 A workstation management system that lets university research librarians monitor terminal status and manage shared-computer sessions from a web console.
               </p>
+              <div class="deck-card__foot">
+                <span class="work-card-status">
+                  <span class="status-dot"></span> Functional Web Admin
+                </span>
+                <a href="case-studies.html#library-control" class="work-card-action">
+                  Read full case study <span>↘</span>
+                </a>
+              </div>
             </div>
-
-            <div class="work-card-bottom">
-              <span class="work-card-status">
-                <span class="status-dot"></span> Functional Web Admin
-              </span>
-              <a href="case-studies.html#library-control" class="work-card-action">
-                Read full case study <span>↘</span>
-              </a>
-            </div>
+            <span class="deck-card__dim" aria-hidden="true"></span>
           </article>
 
-          <!-- Project 03: Dansamdolly -->
-          <article class="work-card reveal-on-scroll">
-            <div class="work-card-top">
+          <!-- Deck Card 03: Dansamdolly -->
+          <article class="deck-card" style="--deck-i:2">
+            <div class="deck-card__media">
               <div class="work-card-thumb">
                 <picture><source srcset="assets/dansamdolly/gallery/02-dashboard.webp" type="image/webp"><img width="2880" height="3658" src="assets/dansamdolly/gallery/02-dashboard.png" alt="Dansamdolly inventory management dashboard" loading="lazy" decoding="async"></picture>
               </div>
-              <span class="work-card-number">03 / SYSTEMS</span>
-              <span class="work-card-category">JAVA · SPRING BOOT · WEB ERP</span>
-              <h3 class="work-card-title">Dansamdolly</h3>
+            </div>
+            <div class="deck-card__body">
+              <div class="deck-card__head">
+                <span class="work-card-number">03 / SYSTEMS</span>
+                <span class="work-card-category">JAVA · SPRING BOOT · WEB ERP</span>
+              </div>
+              <h3 class="deck-card__title">Dansamdolly</h3>
               <p class="work-card-desc">
                 A Spring Boot web application for inventory and stock management—products, sales, invoicing, suppliers, warehouses, and reporting—built with a modular architecture.
               </p>
+              <div class="deck-card__foot">
+                <span class="work-card-status">
+                  <span class="status-dot academic"></span> Inventory Management System
+                </span>
+                <a href="case-studies.html#dansamdolly" class="work-card-action">
+                  Read full case study <span>↘</span>
+                </a>
+              </div>
             </div>
-
-            <div class="work-card-bottom">
-              <span class="work-card-status">
-                <span class="status-dot academic"></span> Inventory Management System
-              </span>
-              <a href="case-studies.html#dansamdolly" class="work-card-action">
-                Read full case study <span>↘</span>
-              </a>
-            </div>
+            <span class="deck-card__dim" aria-hidden="true"></span>
           </article>
 
         </div>
@@ -311,67 +336,92 @@
     </section>
 
     <!-- ========================================================================
-         04. About Kunle Teaser
+         05. Capabilities — pinned horizontal pan scene
          ======================================================================== -->
-    <section class="home-section-teaser" aria-label="About Kunle Teaser">
-      <div class="container">
-        <div class="teaser-grid reveal-on-scroll">
-          <div>
-            <span class="meta-eyebrow"><span class="dot-indicator"></span> BACKGROUND &amp; PHILOSOPHY</span>
-            <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: 6px;">Software grounded in real utility and careful craft.</h2>
-            <p style="max-width: 580px; margin-top: 10px;">
-              I’m Kunle, a software developer in Lagos. Rather than adding unnecessary layers of complexity, I build software that solves tangible problems for real people with reliable architectures.
-            </p>
+    <section class="cap-section" data-scene="cap" aria-label="Capabilities and Technical Toolkit">
+      <div class="cap-runway">
+        <div class="cap-sticky">
+          <div class="container">
+            <div class="cap-head">
+              <h2>Tools, languages, and systems with project-backed proof.</h2>
+              <span class="cap-rule" aria-hidden="true"></span>
+            </div>
           </div>
-          <a href="about.html" class="btn-secondary">
-            Read About Kunle →
-          </a>
+          <div class="container cap-viewport">
+            <div class="cap-track">
+
+              <article class="cap-panel">
+                <h3>Native Android</h3>
+                <ul class="cap-list">
+                  <li><b>Java 17</b><span>Core language</span></li>
+                  <li><b>Android SDK &amp; Lifecycle</b><span>Architecture</span></li>
+                  <li><b>OSMDroid &amp; Geolocation</b><span>Mapping</span></li>
+                  <li><b>Location Services API</b><span>GPS &amp; sensors</span></li>
+                </ul>
+                <p class="cap-proof">Proven in <a href="case-studies.html#safealert">SafeAlert</a></p>
+              </article>
+
+              <article class="cap-panel">
+                <h3>Cloud &amp; Backend</h3>
+                <ul class="cap-list">
+                  <li><b>Firebase Authentication</b><span>Identity &amp; OAuth</span></li>
+                  <li><b>Realtime Database</b><span>Live sync</span></li>
+                  <li><b>Cloud Storage</b><span>Asset storage</span></li>
+                  <li><b>RESTful APIs &amp; JSON</b><span>Integration</span></li>
+                </ul>
+                <p class="cap-proof">Proven in <a href="case-studies.html#safealert">SafeAlert backend</a></p>
+              </article>
+
+              <article class="cap-panel">
+                <h3>Systems &amp; Prototyping</h3>
+                <ul class="cap-list">
+                  <li><b>System Design &amp; Topology</b><span>Architecture</span></li>
+                  <li><b>LAN IPC &amp; Sockets</b><span>Protocols</span></li>
+                  <li><b>C# &amp; Python Scripting</b><span>Daemons</span></li>
+                  <li><b>Workstation APIs</b><span>System locking</span></li>
+                </ul>
+                <p class="cap-proof">Proven in <a href="case-studies.html#library-control">Library Control</a></p>
+              </article>
+
+              <article class="cap-panel">
+                <h3>CS Core &amp; Workflow</h3>
+                <ul class="cap-list">
+                  <li><b>Data Structures &amp; OOP</b><span>Foundations</span></li>
+                  <li><b>Git &amp; GitHub</b><span>Collaboration</span></li>
+                  <li><b>Windows &amp; Linux CLI</b><span>Environments</span></li>
+                </ul>
+                <p class="cap-proof">Applied across <a href="case-studies.html#dansamdolly">Dansamdolly</a></p>
+              </article>
+
+              <a class="cap-panel cap-panel--cta" href="skills.html">
+                <span class="cap-cta-arrow" aria-hidden="true">→</span>
+                <span class="cap-cta-label">Explore the full toolkit</span>
+              </a>
+
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ========================================================================
-         05. Technical Toolkit Teaser
+         06. Contact Finale — masked-line scroll reveal
          ======================================================================== -->
-    <section class="home-section-teaser" style="background-color: var(--color-paper-warm);" aria-label="Skills Teaser">
+    <section class="finale-section" data-scene="finale" aria-label="Contact and Collaboration">
       <div class="container">
-        <div class="teaser-grid reveal-on-scroll">
-          <div>
-            <span class="meta-eyebrow"><span class="dot-indicator"></span> CAPABILITIES</span>
-            <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: 6px;">Tools, languages, and systems with project-backed proof.</h2>
-            <p style="max-width: 580px; margin-top: 10px;">
-              Covering Native Android (Java 17), Firebase Cloud Architecture, Systems &amp; LAN protocols, and core CS fundamentals.
-            </p>
-          </div>
-          <a href="skills.html" class="btn-primary">
-            Explore Technical Toolkit →
+        <h2 class="finale-title">
+          <span class="finale-line">Let’s build something</span>
+          <span class="finale-line"><em>dependable</em> together.</span>
+        </h2>
+        <div class="finale-actions">
+          <a href="contact.html" class="btn-primary">
+            Get in touch <span>↗</span>
           </a>
+          <button type="button" class="btn-secondary" data-copy-email>
+            Copy Email
+          </button>
         </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         06. Contact Banner Teaser
-         ======================================================================== -->
-    <section class="home-section-teaser" aria-label="Contact Teaser">
-      <div class="container">
-        <div class="teaser-grid reveal-on-scroll">
-          <div>
-            <span class="meta-eyebrow"><span class="dot-indicator"></span> COLLABORATION &amp; ROLES</span>
-            <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: 6px;">Let’s build something dependable together.</h2>
-            <p style="max-width: 580px; margin-top: 10px;">
-              Open to software engineering roles and collaborations. Direct email: <strong>fasubatimi@gmail.com</strong>.
-            </p>
-          </div>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <button type="button" class="btn-secondary" data-copy-email>
-              Copy Email
-            </button>
-            <a href="contact.html" class="btn-primary">
-              Contact Page ↗
-            </a>
-          </div>
-        </div>
+        <p class="finale-mail">fasubatimi@gmail.com</p>
       </div>
     </section>
 

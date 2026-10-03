@@ -204,7 +204,9 @@
               <p>Fills your message directly into your email client, ready to send.</p>
             </div>
 
-            <form class="composer-form" id="contact-composer-form">
+            <!-- novalidate: the JS composer owns empty-message feedback
+                 (inline note + error shake) instead of the native bubble. -->
+            <form class="composer-form" id="contact-composer-form" novalidate>
               <div class="form-group">
                 <label for="composer-name">Your Name</label>
                 <input type="text" id="composer-name" class="form-input" placeholder="e.g. Sarah Jenkins" autocomplete="name">

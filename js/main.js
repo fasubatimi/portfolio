@@ -2,6 +2,9 @@
  * Kunle's Editorial Portfolio — Multi-Page Interactive Controller
  * Features:
  *  - 3D CSS Phone Tilt Physics (Hero stage on home page)
+ *  - Scrollytelling Engine: five scroll-scrubbed homepage acts
+ *    (hero exit, word-illumination manifesto, sticky work deck,
+ *    horizontal capabilities pan, masked-line contact finale)
  *  - IntersectionObserver Scroll Reveal
  *  - Accessible Mobile Navigation Drawer (Focus trap + Escape key)
  *  - One-Click Email Copy to Clipboard with Polite Feedback
@@ -21,6 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
   reduceMotionQuery.addEventListener('change', (e) => {
     prefersReducedMotion = e.matches;
   });
+
+  // 01b. Scrollytelling gate — the scroll-film CSS (pinned runways, scrubbed
+  // mappings) only applies when the engine will actually run. main.js's
+  // engine owns the runtime; this class is the CSS contract.
+  if (!prefersReducedMotion) {
+    document.documentElement.classList.add('has-scene-js');
+  }
 
   // --------------------------------------------------------------------------
   // 01b. Theme Controller (dark / light, persisted; honors system preference)
@@ -146,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
   staggerGroups.forEach((group) => {
     const rawStep = parseFloat(group.getAttribute('data-stagger'));
     const step = Number.isFinite(rawStep) && rawStep > 0 ? rawStep : 0.09;
-    const maxDelay = 0.6; // cap so long lists never feel sluggish
+    const maxDelay = 0.45; // choreography budget: total stagger stays under 500ms
     const items = group.querySelectorAll(':scope > .reveal-on-scroll, :scope .reveal-on-scroll');
     items.forEach((item, index) => {
       const delay = Math.min(index * step, maxDelay);
@@ -236,9 +246,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const originalText = btn.textContent;
         btn.textContent = 'Copied to clipboard ✓';
         btn.setAttribute('aria-live', 'polite');
+        btn.classList.add('is-copied');
 
         setTimeout(() => {
           btn.textContent = originalText;
+          btn.classList.remove('is-copied');
         }, 2500);
       } catch (err) {
         console.error('Failed to copy email:', err);
@@ -287,7 +299,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = messageInput ? messageInput.value.trim() : '';
       if (!message) {
         setComposerFeedback('Please enter a message before sending.', 'is-error');
-        if (messageInput) messageInput.focus();
+        if (messageInput) {
+          // Error shake: firm 2-3 oscillation nudge pointing at the empty field.
+          messageInput.classList.add('shake-invalid');
+          messageInput.addEventListener('animationend', () => {
+            messageInput.classList.remove('shake-invalid');
+          }, { once: true });
+          messageInput.focus();
+        }
         return;
       }
 
@@ -696,6 +715,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentItems = [];
     let currentIndex = 0;
     let lastFocused = null;
+    let suppressSwapAnimation = false;
 
     // __LIGHTBOX_INSERT__
 
@@ -709,12 +729,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const multi = currentItems.length > 1;
       btnPrev.style.display = multi ? '' : 'none';
       btnNext.style.display = multi ? '' : 'none';
+
+      // Secondary motion on prev/next: the new frame settles in with a quick
+      // decelerate fade (skipped on open, where the whole figure already rises,
+      // and for reduced-motion users).
+      if (!suppressSwapAnimation && !prefersReducedMotion && typeof imgEl.animate === 'function') {
+        imgEl.animate(
+          [
+            { opacity: 0.3, transform: 'scale(0.988)' },
+            { opacity: 1,   transform: 'scale(1)' }
+          ],
+          { duration: 240, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+        );
+      }
+      suppressSwapAnimation = false;
     }
 
     function openAt(items, index) {
       currentItems = items;
       currentIndex = index;
       lastFocused = document.activeElement;
+      suppressSwapAnimation = true;   // opening: the figure rise is the motion
       render();
       overlay.classList.add('is-open');
       overlay.setAttribute('aria-hidden', 'false');
@@ -880,11 +915,13 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('touchstart', dismiss, { passive: true });
   })();
   // 12b. Scroll parallax depth — cinematic drift on the hero stage + work thumbs
+  // (the hero stage is owned by the scrollytelling exit scene when that runs)
   (function scrollParallax() {
     if (prefersReducedMotion) return;
+    const sceneGate = document.documentElement.classList.contains('has-scene-js');
     const items = [];
     const stage = document.querySelector('.hero-stage-wrapper');
-    if (stage && window.matchMedia('(min-width: 881px)').matches) {
+    if (stage && !sceneGate && window.matchMedia('(min-width: 881px)').matches) {
       stage.setAttribute('data-parallax', '');
       items.push({ el: stage, factor: 0.05, cap: 34, scale: 1 });
     }
@@ -916,6 +953,257 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
     update();
+  })();
+
+  // --------------------------------------------------------------------------
+  // 13. Scrollytelling Engine — the homepage scroll film (five scrubbed acts)
+  // One rAF loop measures each scene and eases a 0..1 progress value; CSS owns
+  // every visual mapping through custom properties (--mp, --deck-q, --cap-p,
+  // --fp). Without JS, under reduced motion, or where a scene would fight
+  // touch scrolling, every act renders fully static and readable.
+  // --------------------------------------------------------------------------
+  (function scrollFilm() {
+    if (!document.documentElement.classList.contains('has-scene-js')) return;
+
+    const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
+    const isDesktop = window.matchMedia('(min-width: 881px)');
+
+    // Per-scene smoothed progress ("instant" on the first observed frame so a
+    // mid-page reload doesn't replay the whole scene from zero).
+    const smoothed = new Map();
+    function progress(key, target, ease) {
+      const cur = smoothed.get(key);
+      if (cur === undefined) { smoothed.set(key, target); return target; }
+      const next = cur + (target - cur) * ease;
+      smoothed.set(key, next);
+      return next;
+    }
+
+    const scenes = [];
+    const measurers = [];
+
+    // Act 1 · Hero exit — depth-layered departure: copy layers rise and fade
+    // at different rates while the phone stage sinks, recedes and dims.
+    (function () {
+      const section = document.querySelector('.hero-section');
+      if (!section) return;
+      const rigs = {
+        eyebrow: section.querySelector('.hero-copy .meta-eyebrow'),
+        headline: section.querySelector('.hero-headline'),
+        lead: section.querySelector('.hero-lead'),
+        actions: section.querySelector('.hero-actions'),
+        meta: section.querySelector('.hero-meta-strip'),
+        stage: section.querySelector('.hero-stage-wrapper')
+      };
+      const yScale = isDesktop.matches ? 1 : 0.55;
+
+      function drift(el, y, fade, p) {
+        el.style.transform = 'translate3d(0,' + (y * p).toFixed(1) + 'px,0)';
+        const o = 1 - fade * p;
+        el.style.opacity = (o < 0 ? 0 : o).toFixed(3);
+      }
+
+      scenes.push({
+        update() {
+          const r = section.getBoundingClientRect();
+          const vh = window.innerHeight;
+          if (r.bottom < -60 || r.top > vh) return;
+          const p = progress('hero', clamp01(-r.top / (r.height * 0.85)), 0.18);
+          if (rigs.eyebrow) drift(rigs.eyebrow, -10 * yScale, 1.6, p);
+          if (rigs.headline) drift(rigs.headline, -46 * yScale, 1.15, p);
+          if (rigs.lead) drift(rigs.lead, -30 * yScale, 1.7, p);
+          if (rigs.actions) drift(rigs.actions, -20 * yScale, 2.0, p);
+          if (rigs.meta) rigs.meta.style.opacity = Math.max(0, 1 - 2.4 * p).toFixed(3);
+          if (rigs.stage) {
+            rigs.stage.style.transform =
+              'translate3d(0,' + (52 * yScale * p).toFixed(1) + 'px,0) scale(' +
+              (1 - 0.08 * p).toFixed(4) + ')';
+            const o = 1 - 0.85 * p;
+            rigs.stage.style.opacity = (o < 0 ? 0 : o).toFixed(3);
+          }
+        }
+      });
+    })();
+
+    // Act 2 · Manifesto — pinned track; words illuminate in reading order
+    // across a 6-word burn window (mapping lives in CSS on --mp).
+    (function () {
+      const section = document.querySelector('[data-scene="manifesto"]');
+      const track = section && section.querySelector('.manifesto-track');
+      const text = section && section.querySelector('[data-illuminate]');
+      if (!section || !track || !text) return;
+
+      // Split into word spans; <em> styling survives (we recurse into it) and
+      // inter-word spaces stay as raw text nodes so wrapping stays natural.
+      let wi = 0;
+      (function split(node) {
+        Array.prototype.slice.call(node.childNodes).forEach((child) => {
+          if (child.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            child.textContent.split(/(\s+)/).forEach((tok) => {
+              if (!tok) return;
+              if (/^\s+$/.test(tok)) {
+                frag.appendChild(document.createTextNode(' '));
+              } else {
+                const w = document.createElement('span');
+                w.className = 'manifesto-word';
+                w.style.setProperty('--wi', String(wi++));
+                w.textContent = tok;
+                frag.appendChild(w);
+              }
+            });
+            node.replaceChild(frag, child);
+          } else if (child.nodeType === 1) {
+            split(child);
+          }
+        });
+      })(text);
+      text.style.setProperty('--mw-total', String(wi));
+
+      scenes.push({
+        update() {
+          const r = track.getBoundingClientRect();
+          const vh = window.innerHeight;
+          if (r.bottom < -80 || r.top > vh + 80) return;
+          const total = r.height - vh;
+          const target = total > 0 ? clamp01(-r.top / total) : 1;
+          const p = progress('manifesto', target, 0.16);
+          section.style.setProperty('--mp', p.toFixed(4));
+        }
+      });
+    })();
+
+    // Act 3 · Work deck — cards pin via CSS sticky; the card ahead presses the
+    // pinned one back (scale + veil on --deck-q) as it travels up to its own
+    // resting offset.
+    (function () {
+      const deck = document.querySelector('[data-scene="deck"]');
+      if (!deck) return;
+      const cards = Array.prototype.slice.call(deck.querySelectorAll('.deck-card'));
+      if (cards.length < 2) return;
+
+      let stickyTops = [];
+      function measure() {
+        stickyTops = cards.map((c) => {
+          const t = parseFloat(window.getComputedStyle(c).top);
+          return Number.isFinite(t) ? t : 100;
+        });
+      }
+      measure();
+      measurers.push(measure);
+      window.addEventListener('resize', measure, { passive: true });
+
+      scenes.push({
+        update() {
+          const vh = window.innerHeight;
+          let near = false;
+          for (let i = 0; i < cards.length; i++) {
+            const r = cards[i].getBoundingClientRect();
+            if (r.bottom > -80 && r.top < vh + 80) { near = true; break; }
+          }
+          if (!near) return;
+          for (let i = 0; i < cards.length - 1; i++) {
+            const nextTop = cards[i + 1].getBoundingClientRect().top;
+            const denom = vh - stickyTops[i + 1];
+            const target = denom > 0 ? clamp01((vh - nextTop) / denom) : 0;
+            const q = progress('deck-' + i, target, 0.35);
+            cards[i].style.setProperty('--deck-q', q.toFixed(4));
+          }
+          cards[cards.length - 1].style.setProperty('--deck-q', '0');
+        }
+      });
+    })();
+
+    // Act 4 · Capabilities — pinned runway pans the panel track horizontally
+    // (desktop only; touch devices keep native snap scrolling).
+    (function () {
+      const section = document.querySelector('[data-scene="cap"]');
+      const runway = section && section.querySelector('.cap-runway');
+      const track = section && section.querySelector('.cap-track');
+      if (!section || !runway || !track) return;
+
+      let distance = 0;
+      let desktop = isDesktop.matches;
+      function measure() {
+        desktop = isDesktop.matches;
+        const viewport = track.parentElement;
+        distance = Math.max(0, track.scrollWidth - viewport.clientWidth);
+        if (!desktop) track.style.transform = '';
+      }
+      measure();
+      measurers.push(measure);
+      window.addEventListener('resize', measure, { passive: true });
+
+      scenes.push({
+        update() {
+          if (!desktop) return;
+          const r = runway.getBoundingClientRect();
+          const vh = window.innerHeight;
+          if (r.bottom < -80 || r.top > vh + 80) return;
+          const total = r.height - vh;
+          const target = total > 0 ? clamp01(-r.top / total) : 0;
+          const p = progress('cap', target, 0.14);
+          track.style.transform = 'translate3d(' + (-distance * p).toFixed(1) + 'px,0,0)';
+          section.style.setProperty('--cap-p', p.toFixed(4));
+        }
+      });
+    })();
+
+    // Act 5 · Contact finale — two masked lines unmask in sequence on --fp.
+    (function () {
+      const section = document.querySelector('[data-scene="finale"]');
+      if (!section) return;
+      Array.prototype.forEach.call(section.querySelectorAll('.finale-line'), (line, i) => {
+        line.style.setProperty('--li', String(i));
+        if (!line.querySelector('.finale-line__inner')) {
+          const inner = document.createElement('span');
+          inner.className = 'finale-line__inner';
+          while (line.firstChild) inner.appendChild(line.firstChild);
+          line.appendChild(inner);
+        }
+      });
+
+      scenes.push({
+        update() {
+          const r = section.getBoundingClientRect();
+          const vh = window.innerHeight;
+          if (r.top > vh + 60 || r.bottom < -60) return;
+          const target = clamp01((vh - r.top) / (vh * 0.78));
+          const p = progress('finale', target, 0.17);
+          section.style.setProperty('--fp', p.toFixed(4));
+        }
+      });
+    })();
+
+    // Re-measure once webfonts have settled (panel text rewrap shifts widths).
+    window.addEventListener('load', () => measurers.forEach((m) => m()));
+
+    // Reduced motion switched on mid-session: retire the film, restore statics.
+    reduceMotionQuery.addEventListener('change', (e) => {
+      if (!e.matches) return;
+      scenes.length = 0;
+      smoothed.clear();
+      document.documentElement.classList.remove('has-scene-js');
+      document.querySelectorAll('.hero-copy > *, .hero-stage-wrapper').forEach((el) => {
+        el.style.transform = '';
+        el.style.opacity = '';
+      });
+      document.querySelectorAll('.deck-card').forEach((c) => c.style.removeProperty('--deck-q'));
+      document.querySelectorAll('[data-scene]').forEach((s) => {
+        s.style.removeProperty('--mp');
+        s.style.removeProperty('--fp');
+        s.style.removeProperty('--cap-p');
+      });
+      document.querySelectorAll('.cap-track').forEach((t) => { t.style.transform = ''; });
+    });
+
+    function tick() {
+      if (!prefersReducedMotion) {
+        for (let i = 0; i < scenes.length; i++) scenes[i].update();
+      }
+      requestAnimationFrame(tick);
+    }
+    if (scenes.length) requestAnimationFrame(tick);
   })();
   // Reset leave-state when navigating back via bfcache (avoids blank/faded page)
   window.addEventListener('pageshow', () => {
