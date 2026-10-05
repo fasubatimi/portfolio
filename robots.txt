@@ -4,4 +4,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fasubatimi.github.io/portfolio/sitemap.xml
+Sitemap: https://fasubatimi.is-a.dev/sitemap.xml
