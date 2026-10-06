@@ -43,19 +43,35 @@
   <meta name="twitter:description" content="Making practical software feel clear and dependable. Portfolio and case studies of Fasuba Olukunle (Kunle).">
   <meta name="twitter:image" content="https://fasubatimi.is-a.dev/assets/og/og-cover.png">
 
-  <!-- Structured Data: Person -->
+  <!-- Structured Data: Person + WebSite -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Fasuba Olukunle",
-    "alternateName": "Kunle",
-    "jobTitle": "Software Developer",
-    "url": "https://fasubatimi.is-a.dev/",
-    "email": "mailto:fasubatimi@gmail.com",
-    "address": { "@type": "PostalAddress", "addressLocality": "Lagos", "addressCountry": "NG" },
-    "sameAs": ["https://github.com/fasubatimi"],
-    "knowsAbout": ["Android development", "Java", "Firebase", "OSMDroid", "Spring Boot", "React", "FastAPI", "System design"]
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://fasubatimi.is-a.dev/#person",
+        "name": "Fasuba Olukunle",
+        "alternateName": "Kunle",
+        "jobTitle": "Software Developer",
+        "description": "Software developer in Lagos, Nigeria building Android apps, systems, and clear interfaces around real problems.",
+        "url": "https://fasubatimi.is-a.dev/",
+        "image": "https://fasubatimi.is-a.dev/assets/og/og-cover.png",
+        "email": "mailto:fasubatimi@gmail.com",
+        "address": { "@type": "PostalAddress", "addressLocality": "Lagos", "addressCountry": "NG" },
+        "sameAs": ["https://github.com/fasubatimi"],
+        "knowsAbout": ["Android development", "Java", "Firebase", "OSMDroid", "Spring Boot", "React", "FastAPI", "System design"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://fasubatimi.is-a.dev/#website",
+        "url": "https://fasubatimi.is-a.dev/",
+        "name": "Fasuba Olukunle — Portfolio",
+        "description": "Portfolio and case studies of Fasuba Olukunle (Kunle), software developer in Lagos, Nigeria.",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://fasubatimi.is-a.dev/#person" }
+      }
+    ]
   }
   </script>
   

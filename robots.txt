@@ -1,7 +1,29 @@
 # Fasuba Olukunle — Portfolio
-# All content is public and crawlable.
+# All content is public and crawlable, including by AI/LLM crawlers.
 
 User-agent: *
+Allow: /
+
+# AI search & assistant crawlers — explicitly welcome
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: Bytespider
 Allow: /
 
 Sitemap: https://fasubatimi.is-a.dev/sitemap.xml

@@ -1,0 +1,26 @@
+# Fasuba Olukunle
+
+> Software developer in Lagos, Nigeria building Android apps, systems, and clear interfaces around real problems. Open to software engineering roles.
+
+Fasuba Olukunle (known as Kunle) builds practical software: native Android applications in Java, web admin systems with FastAPI and React, and Spring Boot business systems. His work emphasizes reliable architecture, clear interfaces, and honest documentation. Every listed project is functional, with case studies covering the real engineering decisions.
+
+## Pages
+
+- [Home](https://fasubatimi.is-a.dev/): introduction and featured project
+- [Selected Work](https://fasubatimi.is-a.dev/work.html): the three featured projects
+- [Case Studies](https://fasubatimi.is-a.dev/case-studies.html): detailed engineering write-ups
+- [About](https://fasubatimi.is-a.dev/about.html): biography and engineering philosophy
+- [Skills](https://fasubatimi.is-a.dev/skills.html): technical capabilities with project-backed proof
+- [CV](https://fasubatimi.is-a.dev/cv.html): printable curriculum vitae
+- [Contact](https://fasubatimi.is-a.dev/contact.html): contact form and direct email
+
+## Projects
+
+- [SafeAlert](https://fasubatimi.is-a.dev/case-studies.html#safealert): functional Android emergency-reporting app with a live incident map, 3 km verified-incident alert radius, and safety communication. Built with Java 17, Firebase Authentication, Realtime Database, Cloud Storage, and OSMDroid open-source maps.
+- [Library Control](https://fasubatimi.is-a.dev/case-studies.html#library-control): functional web admin console that lets university research librarians monitor workstation status and manage shared-computer sessions. Built with FastAPI, React, and LAN IPC.
+- [Dansamdolly](https://fasubatimi.is-a.dev/case-studies.html#dansamdolly): functional Spring Boot inventory and stock management web application covering products, sales, invoicing, suppliers, warehouses, and reporting with a modular architecture.
+
+## Contact
+
+- Email: fasubatimi@gmail.com
+- GitHub: https://github.com/fasubatimi
